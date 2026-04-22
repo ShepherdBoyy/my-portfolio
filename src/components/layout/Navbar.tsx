@@ -1,4 +1,5 @@
-import type { NavItem } from "@/types/navbar.types";
+import type { NavItem } from "@/types/layout/navbar.types";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -102,8 +103,36 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle Menu"
         >
-          {isOpen ? "Hello" : "Hi"}
+          {isOpen ? <X /> : <Menu />}
         </button>
+
+        {isOpen && (
+          <div className="md:hidden px-6 pb-6">
+            <ul className="flex flex-col gap-4 pt-4">
+              {navItems.map((item) => (
+                <li key={item.sectionId}>
+                  <button
+                    onClick={() => handleNavClick(item.sectionId)}
+                    className={`block text-sm font-medium tracking-wide transition-colors duration-200 cursor-pointer
+                      ${isActive(item.sectionId)
+                        ? "text-secondary"
+                        : "text-text-muted hover:text-text-primary"
+                      }
+                    `}
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => handleNavClick("contact")}
+              className="mt-5 text-center bg-secondary hover:bg-secondary-dark text-white text-sm font-semibold px-5 py-2 rounded-md transition-all duration-200 cursor-pointer"
+            >
+              Hire Me
+            </button>
+          </div>
+        )}
       </div>
     </nav>
   );
