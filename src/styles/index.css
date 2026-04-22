@@ -14,9 +14,12 @@
   /* Text Colors */
   --color-text-primary: #FFFFFF;
   --color-text-muted: #CBD5E1;
+
+  --font-sans: "Open Sans", sans-serif;
 }
 
 body {
     background-color: #181818;
     color: #FFFFFF;
+    font-family: var(--font-sans);
 }
