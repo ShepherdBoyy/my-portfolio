@@ -62,11 +62,11 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 bg-charcoal">
-      <div className="max-w-[115rem] mx-auto px-4 py-8 flex items-center justify-between">
+    <nav className="sticky top-0 z-50 backdrop-blur-md">
+      <div className="max-w-[115rem] mx-auto px-6 py-6 flex items-center justify-between">
         <button
           onClick={() => handleNavClick("home")}
-          className="text-secondary font-bold text-2xl tracking-widest uppercase cursor-pointer"
+          className="text-accent font-bold text-2xl tracking-widest uppercase cursor-pointer"
         >
           Logo
         </button>
@@ -76,10 +76,10 @@ export default function Navbar() {
             <li key={item.sectionId}>
               <button
                 onClick={() => handleNavClick(item.sectionId)}
-                className={`text-sm font-medium tracking-wide transition-colors duration-200 cursor-pointer
+                className={`text-sm font-semibold tracking-wide transition-all duration-200 cursor-pointer
                     ${isActive(item.sectionId)
-                        ? "text-secondary"
-                        : "text-text-muted hover:text-text-primary"
+                        ? "text-accent"
+                        : "text-muted hover:text-accent hover:scale-130"
                     }`
                 }
               >
@@ -92,14 +92,14 @@ export default function Navbar() {
         <div className="hidden md:block">
           <button
             onClick={() => handleNavClick("contact")}
-            className="bg-secondary hover:bg-secondary-dark text-white text-sm font-semibold px-5 py-2 rounded-md transition-all duration-200 hover:shadow-lg hover:shadow-secondary/30 cursor-pointer"
+            className="bg-accent hover:bg-accent-hover text-text text-sm font-semibold px-6 py-2.5 rounded-md transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 cursor-pointer"
           >
             Hire Me
           </button>
         </div>
 
         <button
-            className="md:hidden text-text-primary"
+            className="md:hidden text-text"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle Menu"
         >
@@ -107,16 +107,16 @@ export default function Navbar() {
         </button>
 
         {isOpen && (
-          <div className="md:hidden px-6 pb-6">
-            <ul className="flex flex-col gap-4 pt-4">
+          <div className="md:hidden px-6 pb-6 bg-surface border-t border-border">
+            <ul className="flex flex-col gap-5 pt-4">
               {navItems.map((item) => (
                 <li key={item.sectionId}>
                   <button
                     onClick={() => handleNavClick(item.sectionId)}
-                    className={`block text-sm font-medium tracking-wide transition-colors duration-200 cursor-pointer
+                    className={`block text-sm font-semibold tracking-wide transition-colors duration-200 cursor-pointer
                       ${isActive(item.sectionId)
-                        ? "text-secondary"
-                        : "text-text-muted hover:text-text-primary"
+                        ? "text-accent"
+                        : "text-muted hover:text-text"
                       }
                     `}
                   >
@@ -127,7 +127,7 @@ export default function Navbar() {
             </ul>
             <button
               onClick={() => handleNavClick("contact")}
-              className="mt-5 text-center bg-secondary hover:bg-secondary-dark text-white text-sm font-semibold px-5 py-2 rounded-md transition-all duration-200 cursor-pointer"
+              className="mt-6 w-full bg-accent hover:bg-accent-hover text-text text-sm font-semibold px-5 py-2.5 rounded-md transition-all duration-300 cursor-pointer"
             >
               Hire Me
             </button>
