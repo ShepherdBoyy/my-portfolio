@@ -6,8 +6,8 @@ export default function DesktopNav({
   onNavClick,
 }: DesktopNavProps) {
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-md">
-      <div className="max-w-[115rem] mx-auto px-6 py-6 flex items-center justify-between">
+    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md">
+      <div className="w-full px-12 xl:px-24 h-20 flex items-center justify-between">
         <button
           onClick={() => onNavClick("home")}
           className="text-accent font-bold text-2xl tracking-widest uppercase cursor-pointer"
@@ -15,7 +15,7 @@ export default function DesktopNav({
           Logo
         </button>
 
-        <ul className="hidden md:flex items-center gap-20">
+        <ul className="hidden md:flex items-center gap-6 lg:gap-12 xl:gap-20">
           {navItems.map((item) => (
             <li key={item.sectionId}>
               <button
@@ -35,7 +35,7 @@ export default function DesktopNav({
 
         <button
           onClick={() => onNavClick("contact")}
-          className="bg-accent hover:bg-accent-hover text-text text-sm font-semibold px-6 py-2.5 rounded-md transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 cursor-pointer"
+          className="hidden md:inline-flex bg-accent hover:bg-accent-hover text-text text-sm font-semibold px-6 py-2.5 rounded-md transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 cursor-pointer"
         >
           Hire Me
         </button>
