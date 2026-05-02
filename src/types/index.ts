@@ -1,2 +1,6 @@
-export * from "./layout/navbar.types"
 export * from "./hooks/useWindowSize.types"
+
+export * from "./layout/navbar.types"
+
+export * from "./sections/home.types"
+export * from "./sections/about.types"
