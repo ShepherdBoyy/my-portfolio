@@ -1,4 +1,4 @@
-import type { Stat } from "@/types/sections/home.types";
+import type { Stat } from "@/types";
 
 const stats: Stat[] = [
   { value: "2+", label: "Years of Experience" },
@@ -8,7 +8,7 @@ const stats: Stat[] = [
 
 export default function Home() {
   return (
-    <div className="flex items-center px-6 sm:px-12 lg:py-26 xl:px-24 pt-12 lg:pt-0 lg:min-h-screen">
+    <div className="min-h-screen flex items-center px-6 sm:px-12 lg:py-26 xl:px-24 pt-12 lg:pt-0">
       <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
         <div className="flex-1 flex flex-col gap-10 text-center lg:text-left items-center lg:items-start">
           <div className="space-y-2">
