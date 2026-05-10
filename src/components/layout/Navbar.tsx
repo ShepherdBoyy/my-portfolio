@@ -6,12 +6,12 @@ import DesktopNav from "./DesktopNav"
 import MobileSidebar from "./MobileSidebar"
 
 const navItems: NavItem[] = [
-  { label: "Home",       sectionId: "home"       },
-  { label: "About",      sectionId: "about"      },
-  { label: "Skills",     sectionId: "skills"     },
-  { label: "Projects",   sectionId: "projects"   },
+  { label: "Home", sectionId: "home" },
+  { label: "About", sectionId: "about" },
+  { label: "Skills", sectionId: "skills" },
+  { label: "Projects", sectionId: "projects" },
   { label: "Experience", sectionId: "experience" },
-  { label: "Contact",    sectionId: "contact"    },
+  { label: "Contact", sectionId: "contact" },
 ]
 
 export default function Navbar() {
