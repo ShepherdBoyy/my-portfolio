@@ -35,7 +35,7 @@ export default function About() {
             {aboutCards.map((card) => (
               <div
                 key={card.title}
-                className="bg-surface rounded-2xl p-8 flex flex-col gap-4 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-black/40"
+                className="flex flex-col gap-4"
               >
                 <h3 className="text-accent text-base font-bold tracking-wide uppercase">{card.title}</h3>
                 <p className="text-muted text-sm leading-relaxed">{card.content}</p>
