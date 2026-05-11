@@ -25,7 +25,7 @@ export default function Home() {
             I build things that help make the world a better place
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
             <button
               className="w-full sm:w-auto bg-accent hover:bg-accent-hover text-text px-9 py-3.5 rounded-md transition-all duration-300 hover:shadow-lg hover:shadow-accent/30 cursor-pointer"
               onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
@@ -42,11 +42,11 @@ export default function Home() {
           <div className="flex items-center bg-surface rounded-xl w-full sm:w-fit p-4">
             {stats.map((stat, index) => (
               <div key={stat.label} className="flex items-center flex-1 sm:flex-none">
-                <div className="px-8 py-2 flex-1 sm:flex-none lg:text-left">
+                <div className="px-4 sm:px-8 py-2 flex-1 sm:flex-none lg:text-left">
                   <p className="text-accent text-2xl sm:text-3xl font-bold leading-tight">
                     {stat.value}
                   </p>
-                  <p className="text-muted text-xs sm:text-base font-medium whitespace-nowrap">
+                  <p className="text-muted text-xs sm:text-base font-medium">
                     {stat.label}
                   </p>
                 </div>
