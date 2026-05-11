@@ -19,8 +19,8 @@ export default function Skills() {
   }, [])
   
   return (
-    <div ref={ref} className="min-h-screen flex items-center px-6 sm:px-12 xl:px-24 lg:py-26 pt-12 lg:pt-0">
-      <div className="relative w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div ref={ref} className="min-h-screen flex md:block lg:flex items-center px-6 sm:px-12 xl:px-24 lg:py-26 pt-12 lg:pt-0">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
         {skillCategories.map((category, index) => (
           <CategoryCard
             key={category.title}

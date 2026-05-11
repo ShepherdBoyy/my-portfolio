@@ -15,7 +15,7 @@ export default function CategoryCard({
 
   return (
     <div
-      className={`relative bg-surface rounded-3xl p-8 flex flex-col gap-6 transition-all duration-700 ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      className={`bg-surface rounded-3xl p-8 flex flex-col gap-6 transition-all duration-700 ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       style={{ transitionDelay: `${index * 120}ms` }}
     >
       <div className="flex items-center gap-4">
@@ -28,7 +28,7 @@ export default function CategoryCard({
       </div>
 
       <div
-        className={`grid gap-x-8 gap-y-6 ${isLarge ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1"}`}
+        className={`grid gap-x-6 gap-y-4 ${isLarge ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1"}`}
       >
         {category.skills.map((skill) => (
           <SkillRow key={skill.name} skill={skill} animate={animate} />
