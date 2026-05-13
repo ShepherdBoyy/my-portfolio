@@ -1,23 +1,16 @@
-import type { LucideIcon } from "lucide-react"
-
 export type ExperienceItem = {
     title: string
     organization: string
-    period: string
+    date: string
     address: string
-    website: string
-    type: "work" | "education"
+    url: string
 }
 
 export type Certification = {
     name: string
     issuer: string
-    date: string
+    issuedDate: string
     image: string
 }
 
-export type ExperienceTab = {
-    label: string
-    value: "work" | "education"
-    icon: LucideIcon
-}
+export type ExperienceTab = "work" | "academic"
