@@ -1,5 +1,5 @@
 import { skillCategories } from "@/data/skills.data";
-import CategoryCard from "./elements/CategoryCard";
+import CategoryCard from "./elements/skills/CategoryCard";
 import { useEffect, useRef, useState } from "react";
 
 export default function Skills() {
