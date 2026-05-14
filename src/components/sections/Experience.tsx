@@ -1,6 +1,71 @@
+import type { ExperienceTab } from "@/types";
+import { Award } from "lucide-react";
+import { useState } from "react";
 
 export default function Experience() {
+  const [activeTab, setActiveTab] = useState<ExperienceTab>("work");
+  const [certModalOpen, setCertModalOpen] = useState<boolean>(false);
+
   return (
-    <div>Experience</div>
-  )
+    <div className="min-h-screen flex flex-col justify-between px-6 lg:py-26 pt-12 lg:pt-0">
+      <div className="flex items-center justify-center">
+        <div className="flex items-center gap-2 bg-surface rounded-xl p-1.5">
+          <button
+            onClick={() => setActiveTab("work")}
+            className={`px-6 py-2.5 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer
+              ${
+                activeTab === "work"
+                  ? "bg-accent text-text shadow-lg shadow-accent/20"
+                  : "text-muted hover:text-text"
+              }`}
+          >
+            Work Experience
+          </button>
+          <button
+            onClick={() => setActiveTab("academic")}
+            className={`px-6 py-2.5 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer
+              ${
+                activeTab === "academic"
+                  ? "bg-accent text-text shadow-lg shadow-accent/20"
+                  : "text-muted hover:text-text"
+              }`}
+          >
+            Academic Background
+          </button>
+        </div>
+      </div>
+
+      <div className="flex-1 flex items-center justify-center">
+        <p className="text-muted text-sm">
+          Timeline coming in Step 4 - {activeTab}
+        </p>
+      </div>
+
+      <div className="flex justify-end">
+        <button
+          onClick={() => setCertModalOpen(true)}
+          className="flex items-center gap-3 cursor-pointer bg-accent text-text px-5 py-3 rounded-2xl shadow-xl hover:scale-105 active:scale-95 transition-all duration-300"
+        >
+          <Award size={18} />
+          <span className="text-sm font-semibold tracking-wide">
+            Certifications
+          </span>
+        </button>
+      </div>
+
+      {certModalOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center"
+          onClick={() => setCertModalOpen(false)}
+        >
+          <div
+            className="bg-surface rounded-2xl p-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p className="text-text">Certifications modal - coming in Step 6</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
