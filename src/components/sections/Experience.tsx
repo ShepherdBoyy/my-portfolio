@@ -1,15 +1,20 @@
 import type { ExperienceTab } from "@/types";
 import { Award } from "lucide-react";
 import { useState } from "react";
+import HorizontalTimeline from "./elements/experience/HorizontalTimeline";
+import { academicBackground, workExperiences } from "@/data/experience.data";
 
 export default function Experience() {
   const [activeTab, setActiveTab] = useState<ExperienceTab>("work");
   const [certModalOpen, setCertModalOpen] = useState<boolean>(false);
 
+  const activeItems =
+    activeTab === "work" ? workExperiences : academicBackground;
+
   return (
     <div className="min-h-screen flex flex-col justify-between px-6 lg:py-26 pt-12 lg:pt-0">
-      <div className="flex items-center justify-center">
-        <div className="flex items-center gap-2 bg-surface rounded-xl p-1.5">
+      <div className="flex items-center">
+        <div className="flex items-center gap-2 bg-surface rounded-xl p-1.5 mt-6">
           <button
             onClick={() => setActiveTab("work")}
             className={`px-6 py-2.5 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer
@@ -35,10 +40,8 @@ export default function Experience() {
         </div>
       </div>
 
-      <div className="flex-1 flex items-center justify-center">
-        <p className="text-muted text-sm">
-          Timeline coming in Step 4 - {activeTab}
-        </p>
+      <div>
+        <HorizontalTimeline items={activeItems} />
       </div>
 
       <div className="flex justify-end">
