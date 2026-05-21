@@ -12,8 +12,6 @@ export default function TimelineCard({ item, position }: Props) {
       className={`group relative w-80 flex flex-col gap-4 bg-surface/80 backdrop-blur-md border border-border/60 rounded-3xl p-6 transition-all duraiton-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/20 hover:border-accent/40 cursor-pointer ${position === "above" ? "mb-12" : "mt-12"}`}
       onClick={() => window.open(item.url, "_blank")}
     >
-      <div className="w-full h-[3px] absolute top-0 left-0 bg-gradient-to-r from-transparent via-accent to-transparent group-hover:opacity-100 transition-opacity duration-500 rounded-t-3xl" />
-
       <p className="text-text text-base font-bold leading-snug">{item.title}</p>
       <p className="text-accent text-sm font-semibold tracking-wide">
         {item.organization}
