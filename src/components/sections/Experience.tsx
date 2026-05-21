@@ -3,6 +3,7 @@ import { Award } from "lucide-react";
 import { useState } from "react";
 import HorizontalTimeline from "./elements/experience/HorizontalTimeline";
 import { academicBackground, workExperiences } from "@/data/experience.data";
+import CertModal from "./elements/experience/CertModal";
 
 export default function Experience() {
   const [activeTab, setActiveTab] = useState<ExperienceTab>("work");
@@ -57,17 +58,9 @@ export default function Experience() {
       </div>
 
       {certModalOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center"
-          onClick={() => setCertModalOpen(false)}
-        >
-          <div
-            className="bg-surface rounded-2xl p-8"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <p className="text-text">Certifications modal - coming in Step 6</p>
-          </div>
-        </div>
+        <CertModal
+          onClose={() => setCertModalOpen(false)}
+        />
       )}
     </div>
   );

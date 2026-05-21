@@ -14,3 +14,7 @@ export type Certification = {
 }
 
 export type ExperienceTab = "work" | "academic"
+
+export type CertModalProps = {
+    onClose: () => void
+}
