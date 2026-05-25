@@ -18,3 +18,17 @@ export type ExperienceTab = "work" | "academic"
 export type CertModalProps = {
     onClose: () => void
 }
+
+export type TimelineProps = {
+    items: ExperienceItem[]
+}
+
+export type HorizontalCardProps = {
+    item: ExperienceItem
+    position: "above" | "below"
+}
+
+export type VerticalCardProps = {
+    item: ExperienceItem
+    side: "left" | "right"
+}
