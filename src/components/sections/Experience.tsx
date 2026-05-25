@@ -1,9 +1,10 @@
 import type { ExperienceTab } from "@/types";
 import { Award } from "lucide-react";
 import { useState } from "react";
-import HorizontalTimeline from "./elements/experience/HorizontalTimeline";
+import HorizontalTimeline from "./elements/experience/horizontal/HorizontalTimeline";
 import { academicBackground, workExperiences } from "@/data/experience.data";
 import CertModal from "./elements/experience/CertModal";
+import VerticalTimeline from "./elements/experience/vertical/VerticalTimeline";
 
 export default function Experience() {
   const [activeTab, setActiveTab] = useState<ExperienceTab>("work");
@@ -13,7 +14,7 @@ export default function Experience() {
     activeTab === "work" ? workExperiences : academicBackground;
 
   return (
-    <div className="min-h-screen flex flex-col justify-between px-6 lg:py-26 pt-12 lg:pt-0">
+    <div className="min-h-screen flex flex-col justify-between px-6 lg:py-26 lg:pt-0">
       <div className="flex items-center">
         <div className="flex items-center gap-2 bg-surface rounded-xl p-1.5 mt-6">
           <button
@@ -41,8 +42,14 @@ export default function Experience() {
         </div>
       </div>
 
-      <div>
-        <HorizontalTimeline items={activeItems} />
+      <div key={activeTab} className="flex-1 flex items-center">
+        <div className="w-full hidden md:block lg:hidden">
+          <VerticalTimeline items={activeItems} />
+        </div>
+
+        <div className="w-full hidden lg:block">
+          <HorizontalTimeline items={activeItems} />
+        </div>
       </div>
 
       <div className="flex justify-end">
