@@ -5,6 +5,7 @@ import HorizontalTimeline from "./elements/experience/horizontal/HorizontalTimel
 import { academicBackground, workExperiences } from "@/data/experience.data";
 import CertModal from "./elements/experience/CertModal";
 import VerticalTimeline from "./elements/experience/vertical/VerticalTimeline";
+import StackedCards from "./elements/experience/StackedCards";
 
 export default function Experience() {
   const [activeTab, setActiveTab] = useState<ExperienceTab>("work");
@@ -43,16 +44,22 @@ export default function Experience() {
       </div>
 
       <div key={activeTab} className="flex-1 flex items-center">
+        <div className="w-full block md:hidden">
+          <StackedCards items={activeItems} />
+        </div>
+
         <div className="w-full hidden md:block lg:hidden">
           <VerticalTimeline items={activeItems} />
         </div>
 
-        <div className="w-full hidden lg:block">
-          <HorizontalTimeline items={activeItems} />
+        <div className="hidden lg:flex flex-1 items-center justify-center">
+          <div className="w-full max-w-7xl">
+            <HorizontalTimeline items={activeItems} />
+          </div>
         </div>
       </div>
 
-      <div className="flex justify-end">
+      <div className="flex justify-end pb-6">
         <button
           onClick={() => setCertModalOpen(true)}
           className="flex items-center gap-3 cursor-pointer bg-accent text-text px-5 py-3 rounded-2xl shadow-xl hover:scale-105 active:scale-95 transition-all duration-300"
