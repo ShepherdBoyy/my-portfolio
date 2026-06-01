@@ -1,72 +1,77 @@
 import { certifications } from "@/data/experience.data";
 import type { CertModalProps } from "@/types";
-import { Calendar, ExternalLink, ShieldCheck, X } from "lucide-react";
+import { BadgeCheck, Calendar, ExternalLink, X } from "lucide-react";
 
 export default function CertModal({ onClose }: CertModalProps) {
   return (
     <div
+        className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-6"
         onClick={onClose}
-        className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-6"
     >
         <div
+            className="w-full max-w-2xl max-h-[85vh] bg-surface rounded-3xl flex flex-col shadow-2xl shadow-black/60 border border-border/60"
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-5xl max-h-[88vh] overflow-hidden rounded-3xl bg-surface/80 backdrop-blur-xl"
         >
-            <div className="flex items-center justify-between px-8 py-6 border-b border-border/50">
-                <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-2xl border border-accent/10 flex items-center justify-center">
-                        <ShieldCheck size={22} className="text-accent" />
+            <div className="flex items-center justify-between px-6 py-5 border-b border-border/60">
+                <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 bg-accent/10 rounded-xl flex items-center justify-center">
+                        <BadgeCheck size={18} className="text-accent" />
                     </div>
-
                     <div>
-                        <h3 className="text-text text-xl font-bold tracking-wide">
-                            Certifications
+                        <h3 className="text-text text-base font-bold tracking-wide">
+                            My Certifications
                         </h3>
-                        <p className="text-muted text-sm mt-1">
-                            Professional achievements & completed programs
+                        <p className="text-muted text-xs">
+                            {certifications.length} certificates earned
                         </p>
                     </div>
                 </div>
                 
                 <button
                     onClick={onClose}
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-muted hover:text-text hover:bg-white/5 transition-all duration-300 cursor-pointer"
+                    className="w-8 h-8 rounded-lg flex items-center justify-center text-muted hover:text-text hover:bg-elevated transition-all duration-200 cursor-pointer"
+                    aria-label="Close"
                 >
-                    <X size={18} />
+                    <X size={17} />
                 </button>
             </div>
 
-            <div className="overflow-y-auto max-h-[calc(88vh-96px)] p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div className="overflow-y-auto p-6 scrollbar-hide">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {certifications.map((cert) => (
                         <div
                             key={cert.name}
-                            className="group relative overflow-hidden bg-elevated/50 rounded-2xl border border-border/60 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/20 hover:border-accent/40 cursor-pointer"
+                            className="group bg-elevated rounded-xl overflow-hidden border border-border/60 hover:border-accent/40 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-1 cursor-pointer"
                         >
-                            <div className="h-44 overflow-hidden bg-background">
+                            <div className="relative h-36 bg-background overflow-hidden">
                                 <img
                                     src={cert.image}
                                     alt={cert.name}
                                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
-                                <button className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
-                                    <ExternalLink size={14} className="text-muted" />
-                                </button>
+
+                                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <div className="flex items-center gap-2 text-text text-xs font-semibold bg-accent/90 px-4 py-2 rounded-full">
+                                        <ExternalLink size={13} />
+                                        <span>View Certificate</span>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div className="p-5 space-y-4">
-                                <div className="space-y-1">
-                                    <h4 className="text-text text-sm font-semibold leading-relaxed">
-                                        {cert.name}
-                                    </h4>
-                                    <p className="text-accent text-sm font-medium tracking-wide">
+                            <div className="p-4 flex flex-col gap-2">
+                                <p className="text-text text-sm font-semibold leading-snug">
+                                    {cert.name}
+                                </p>
+
+                                <div className="flex items-center justify-between">
+                                    <p className="text-accent text-xs font-medium">
                                         {cert.issuer}
                                     </p>
-                                </div>
 
-                                <div className="flex items-center gap-2 text-muted text-xs pt-3 border-t border-border/40">
-                                    <Calendar size={12} />
-                                    <span>{cert.issuedDate}</span>
+                                    <div className="flex items-center gap-1.5 text-muted text-xs">
+                                        <Calendar size={11} className="shrink-0" />
+                                        <span>{cert.issuedDate}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
