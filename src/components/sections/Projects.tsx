@@ -10,11 +10,11 @@ export default function Projects() {
   const gridItems = featuredProjects.slice(1, 4)
 
   return (
-    <div className="">
+    <div className="min-h-screen flex items-center px-6 sm:px-12 lg:py-26 xl:px-24 pt-12 lg:pt-0">
       <div className="w-full flex flex-col gap-8">
         <div className="flex items-center gap-4">
           <span className="w-10 h-[3px] bg-accent rounded-full" />
-          <h2 className="text-3xl xl:text-4xl rounded-full">
+          <h2 className="text-3xl xl:text-4xl font-bold">
             Featured <span className="text-accent">Projects</span>
           </h2>
         </div>
@@ -32,7 +32,7 @@ export default function Projects() {
         <div className="flex justify-center">
           <button
             onClick={() => navigate("/projects")}
-            className="flex items-center gap-3 bg-surface border border-border/60 hover:border-accent/40 text-text text-sm font-semibold px-8 py-3.5 rounded-2xl transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 cursor-pointer gruop"
+            className="flex items-center gap-3 bg-surface border border-border/60 hover:border-accent/40 text-text text-sm font-semibold px-8 py-3.5 rounded-2xl transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 cursor-pointer group"
           >
             <span>View All Projects</span>
             <ArrowRight size={16} className="transition-transform duration-200 group-hover:translate-x-1" />
