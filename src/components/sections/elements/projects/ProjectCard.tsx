@@ -10,8 +10,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       className="group relative flex flex-col rounded-3xl overflow-hidden border border-border/60 bg-surface/80 backdrop-blur-md cursor-pointer h-full transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-2xl hover:shadow-accent/10"
       onClick={() => navigate(`/projects/${project.slug}`)}
     >
-      <div className="relative w-full h-44 overflow-hidden bg-elevated flex-shrink-0">
-        <div className="inset-0 flex items-center justify-center">
+      <div className="relative w-full h-40 overflow-hidden bg-elevated flex-shrink-0">
+        <div className="absolute inset-0 flex items-center justify-center">
           <span className="text-muted text-sm">Project Image</span>
         </div>
 

@@ -8,11 +8,11 @@ export default function FeaturedCard({ project }: FeaturedCardProps) {
   return (
     <div
       onClick={() => navigate(`/projects/${project.slug}`)}
-      className="group w-full rounded-3xl overflow-hidden border border-border/60 bg-surface/80 backdrop-blur-md cursor-pointer transition-all duration-500 hover:border-accent/40 hover:shadow-2xl hover:shadow-accent/10"
+      className="group relative w-full rounded-3xl overflow-hidden border border-border/60 bg-surface/80 backdrop-blur-md cursor-pointer transition-all duration-500 hover:border-accent/40 hover:shadow-2xl hover:shadow-accent/10"
     >
       <div className="flex flex-col lg:flex-row">
-        <div className="w-full lg:w-[55%] h-56 sm:h-72 lg:h-auto overflow-hidden bg-elevated">
-          <div className="inset-0 flex items-center justify-center bg-elevated">
+        <div className="relative w-full lg:w-[55%] h-56 lg:h-72 overflow-hidden bg-elevated flex-shrink-0">
+          <div className="absolute inset-0 flex items-center justify-center bg-elevated">
             <span className="text-muted text-sm">Project Image</span>
           </div>
 
@@ -23,7 +23,7 @@ export default function FeaturedCard({ project }: FeaturedCardProps) {
           /> */}
         </div>
 
-        <div className="flex-1 flex flex-col justify-between p-7 lg:p-10">
+        <div className="flex-1 flex flex-col justify-between p-5 lg:p-7">
           <div className="flex flex-col gap-5">
             <div className="flex items-center gap-2">
               <span className="text-xs font-semibold tracking-wide uppercase text-accent bg-accent/10 px-3 py-1 rounded-full border border-border/20">
