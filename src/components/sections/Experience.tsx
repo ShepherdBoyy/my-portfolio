@@ -15,7 +15,7 @@ export default function Experience() {
     activeTab === "work" ? workExperiences : academicBackground;
 
   return (
-    <div className="min-h-screen flex flex-col justify-between px-6 lg:py-26 lg:pt-0">
+    <div className="min-h-screen flex flex-col justify-between px-6 sm:px-12 lg:py-26 xl:px-24 lg:pt-0">
       <div className="flex items-center">
         <div className="flex items-center gap-2 bg-surface rounded-xl p-1.5 mt-6">
           <button
