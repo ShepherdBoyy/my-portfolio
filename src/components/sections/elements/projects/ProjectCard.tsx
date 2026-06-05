@@ -34,7 +34,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </div>
 
-      <div className="flex flex-col flex-1 gap-4 p-6">
+      <div className="flex flex-col flex-1 gap-4 p-5">
         <h3 className="text-text text-base font-bold leading-snug group-hover:text-accent transition-colors duration-300">
           {project.title}
         </h3>
