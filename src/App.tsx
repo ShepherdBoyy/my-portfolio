@@ -1,16 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import MainPage from "./components/layout/MainPage";
-import Projects from "./pages/Projects";
+import Index from "./pages/Projects/Index";
+import ScrollToTop from "./components/layout/ScrollToTop";
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar />
       <main>
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects" element={<Index />} />
         </Routes>
       </main>
     </BrowserRouter>
