@@ -34,3 +34,18 @@ export type SliderProps = {
     images: string[]
     title: string
 }
+
+export type SearchInputProps = {
+    value: string
+    onChange: (value: string) => void
+}
+
+export type PlatformDropdownProps = {
+    activePlatform: ProjectPlatform
+    onPlatformChange: (platform: ProjectPlatform) => void
+}
+
+export type CategoryPillProps = {
+    activeCategory: ProjectCategory
+    onCategoryChange: (category: ProjectCategory) => void
+}
