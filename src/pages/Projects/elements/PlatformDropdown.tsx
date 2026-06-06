@@ -40,7 +40,6 @@ export default function PlatformDropdown({
             }`}
       >
         <span>
-          Platform
           {activePlatform === "All" ? "Platform" : activePlatform}
         </span>
 
