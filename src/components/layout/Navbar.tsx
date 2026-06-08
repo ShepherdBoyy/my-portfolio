@@ -1,9 +1,9 @@
-import type { NavItem } from "@/types"
-import { useEffect, useState } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
-import { useWindowSize } from "@/hooks/useWindowSize"
-import DesktopNav from "./DesktopNav"
-import MobileSidebar from "./MobileSidebar"
+import type { NavItem } from "@/types";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useWindowSize } from "@/hooks/useWindowSize";
+import DesktopNav from "./DesktopNav";
+import MobileSidebar from "./MobileSidebar";
 
 const navItems: NavItem[] = [
   { label: "Home", sectionId: "home" },
@@ -12,76 +12,92 @@ const navItems: NavItem[] = [
   { label: "Projects", sectionId: "projects" },
   { label: "Experience", sectionId: "experience" },
   { label: "Contact", sectionId: "contact" },
-]
+];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen]               = useState<boolean>(false)
-  const [activeSection, setActiveSection] = useState<string>("home")
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [activeSection, setActiveSection] = useState<string>("home");
 
-  const location  = useLocation()
-  const navigate  = useNavigate()
-  const { width } = useWindowSize()
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { width } = useWindowSize();
 
-  const isMobile: boolean = width < 768
+  const isMobile: boolean = width < 768;
   const sidebarOpen: boolean = isMobile && isOpen;
 
   useEffect(() => {
-    document.body.style.overflow = sidebarOpen ? "hidden" : "unset"
-    return () => { document.body.style.overflow = "unset" }
-  }, [sidebarOpen])
+    document.body.style.overflow = sidebarOpen ? "hidden" : "unset";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [sidebarOpen]);
 
   const handleNavClick = (sectionId: string): void => {
-    setIsOpen(false)
+    setIsOpen(false);
 
     if (location.pathname !== "/") {
-      navigate("/")
+      navigate("/");
       setTimeout(() => {
-        document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
-      }, 100)
-      return
+        document
+          .getElementById(sectionId)
+          ?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+      return;
     }
 
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
-  }
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
-    if (location.pathname !== "/") return
+    if (location.pathname !== "/") return;
 
-    const observers: IntersectionObserver[] = []
+    const observers: IntersectionObserver[] = [];
 
     navItems.forEach(({ sectionId }) => {
-      const element = document.getElementById(sectionId)
-      if (!element) return
+      const element = document.getElementById(sectionId);
+      if (!element) return;
 
       const observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(sectionId)
+          if (entry.isIntersecting) setActiveSection(sectionId);
         },
-        { threshold: 0.5 }
-      )
+        { threshold: 0.5 },
+      );
 
-      observer.observe(element)
-      observers.push(observer)
-    })
+      observer.observe(element);
+      observers.push(observer);
+    });
 
-    return () => { observers.forEach(o => o.disconnect()) }
-  }, [location.pathname])
+    return () => {
+      observers.forEach((o) => o.disconnect());
+    };
+  }, [location.pathname]);
 
-  const isActive = (sectionId: string): boolean =>
-    location.pathname === "/" && activeSection === sectionId
+  const isActive = (sectionId: string): boolean => {
+    if (sectionId === "projects") {
+      return (
+        (location.pathname === "/" && activeSection === "projects") ||
+        location.pathname.startsWith("/projects")
+      );
+    }
+
+    return location.pathname === "/" && activeSection === sectionId;
+  };
 
   const sharedProps = {
     navItems,
     isActive,
     onNavClick: handleNavClick,
-  }
+  };
 
-  return isMobile
-    ? <MobileSidebar
-        {...sharedProps}
-        isOpen={sidebarOpen}
-        onOpen={() => setIsOpen(true)}
-        onClose={() => setIsOpen(false)}
-      />
-    : <DesktopNav {...sharedProps} />
+  return isMobile ? (
+    <MobileSidebar
+      {...sharedProps}
+      isOpen={sidebarOpen}
+      onOpen={() => setIsOpen(true)}
+      onClose={() => setIsOpen(false)}
+    />
+  ) : (
+    <DesktopNav {...sharedProps} />
+  );
 }
