@@ -3,6 +3,7 @@ import Navbar from "./components/layout/Navbar";
 import MainPage from "./components/layout/MainPage";
 import Index from "./pages/Projects/Index";
 import ScrollToTop from "./components/layout/ScrollToTop";
+import Show from "./pages/Projects/Show";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/projects" element={<Index />} />
+          <Route path="/projects/:slug" element={<Show />} />
         </Routes>
       </main>
     </BrowserRouter>
