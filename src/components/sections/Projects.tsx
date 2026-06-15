@@ -11,7 +11,7 @@ export default function Projects() {
 
   return (
     <div className="min-h-screen flex items-center px-6 sm:px-12 lg:py-26 xl:px-24 lg:pt-0">
-      <div className="w-full flex flex-col gap-5 mt-6">
+      <div className="w-full flex flex-col gap-5">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <span className="w-10 h-[3px] bg-accent rounded-full" />
