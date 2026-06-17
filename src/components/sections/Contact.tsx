@@ -1,7 +1,8 @@
 import type { FormField, FormErrors, FormStatus } from "@/types";
 import { availabilityItems, initialFields, inputClass, validateForm } from "@/utils/contact.utils";
-import { AlertCircle, Loader2, Send } from "lucide-react";
+import { AlertCircle, Loader2, Mail, MessageSquare, PenSquare, Send, User } from "lucide-react";
 import { useState } from "react";
+import ContactSuccess from "./elements/contact/ContactSuccess";
 
 export default function Contact() {
   const [fields, setFields] = useState<FormField>(initialFields)
@@ -41,6 +42,17 @@ export default function Contact() {
     }
     
     setStatus("loading")
+  }
+
+  const handleReset = (): void => {
+    setFields(initialFields);
+    setErrors({});
+    setTouched({})
+    setStatus("idle");
+  }
+
+  if (status === "success") {
+    return <ContactSuccess onReset={handleReset} />
   }
 
   return (
@@ -87,129 +99,153 @@ export default function Contact() {
         </div>
 
         <div className="flex-1">
-          <div className="bg-surface border border-border/60 rounded-3xl p-6 sm:p-8 flex flex-col gap-5">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="flex flex-col gap-1.5">
-                <label className="text-text text-xs font-semibold tracing-wide uppercase">
+          <div className="bg-surface/80 backdrop-blur-xl rounded-4xl p-7 sm:p-9 shadow-2xl shadow-black/10 flex flex-col gap-7">
+            <div>
+              <h3 className="text-3xl font-bold text-text">
+                Send me a message
+              </h3>
+
+              <p className="text-text/50 mt-2 text-sm leading-relaxed">
+                Have a project in mind or just want to say hello? Feel free to reach out.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="flex flex-col gap-2">
+                <label className="text-text text-[11px] font-semibold tracking-[0.25em] text-text/40 font-medium uppercase">
                   Full Name
                 </label>
 
-                <input
-                  type="text"
-                  name="name"
-                  value={fields.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="Jhey Marc Abad"
-                  className={inputClass("name", touched, errors)}
-                />
+                <div className="relative">
+                  <User size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-text/30" />
+
+                  <input
+                    type="text"
+                    name="name"
+                    value={fields.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    placeholder="Jhey Marc Abad"
+                    className={`${inputClass("name", touched, errors)} bg-background/50 border border-white/5 rounded-2xl pl-14 pr-5 py-4 text-sm placeholder:text-text/30 focus:ring-4 focus:ring-accent/10 transition-all duration-300`}
+                  />
+                </div>
 
                 {touched.name && errors.name && (
                   <p className="text-red-400 text-xs flex items-center gap-1.5">
-                    <AlertCircle size={11} /> {errors.name}
+                    <AlertCircle size={12} /> {errors.name}
                   </p>
                 )}
               </div>
               
-              <div className="flex flex-col gap-1.5">
-                <label className="text-text text-xs font-semibold tracing-wide uppercase">
+              <div className="flex flex-col gap-2">
+                <label className="text-text text-[11px] font-semibold tracking-[0.25em] text-text/40 font-medium uppercase">
                   Email
                 </label>
 
-                <input
-                  type="email"
-                  name="email"
-                  value={fields.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="jmarc.abad26@gmail.com"
-                  className={inputClass("email", touched, errors)}
-                />
+                <div className="relative">
+                  <Mail size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-text/30" />
+
+                  <input
+                    type="email"
+                    name="email"
+                    value={fields.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    placeholder="jmarc.abad26@gmail.com"
+                    className={`${inputClass("email", touched, errors)} bg-background/50 border border-white/5 rounded-2xl pl-14 pr-5 py-4 text-sm placeholder:text-text/30 focus:ring-4 focus:ring-accent/10 transition-all duration-300`}
+                  />
+                </div>
 
                 {touched.email && errors.email && (
                   <p className="text-red-400 text-xs flex items-center gap-1.5">
-                    <AlertCircle size={11} /> {errors.email}
+                    <AlertCircle size={12} /> {errors.email}
                   </p>
                 )}
               </div>
             </div>
 
-            <div className="flex flex-col gap-1.5">
-              <label className="text-text text-xs font-semibold tracing-wide uppercase">
+            <div className="flex flex-col gap-2">
+              <label className="text-text text-[11px] font-semibold tracking-[0.25em] text-text/40 font-medium uppercase">
                 Subject
               </label>
 
-              <input
-                type="text"
-                name="subject"
-                value={fields.subject}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                placeholder="Type here..."
-                className={inputClass("subject", touched, errors)}
-              />
+              <div className="relative">
+                <PenSquare size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-text/30" />
+
+                <input
+                  type="text"
+                  name="subject"
+                  value={fields.subject}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="Type here..."
+                  className={`${inputClass("subject", touched, errors)} bg-background/50 border border-white/5 rounded-2xl pl-14 pr-5 py-4 text-sm placeholder:text-text/30 focus:ring-4 focus:ring-accent/10 transition-all duration-300`}
+                />
+              </div>
 
               {touched.subject && errors.subject && (
                 <p className="text-red-400 text-xs flex items-center gap-1.5">
-                  <AlertCircle size={11} /> {errors.subject}
+                  <AlertCircle size={12} /> {errors.subject}
                 </p>
               )}
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-text text-xs font-semibold tracking-wide uppercase">
+              <label className="text-text text-[11px] font-semibold tracking-[0.25em] text-text/40 font-medium uppercase">
                 Message
               </label>
 
-              <textarea
-                name="message"
-                value={fields.message}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                placeholder="Type here..."
-                rows={5}
-                className={`${inputClass("message", touched, errors)} resize-none`}
-              />
+              <div className="relative">
+                <MessageSquare size={18} className="absolute left-6 top-5 text-text/30" />
+                
+                <textarea
+                  name="message"
+                  value={fields.message}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="Type here..."
+                  rows={6}
+                  className={`${inputClass("message", touched, errors)} resize-none bg-background/50 border border-white/5 rounded-2xl pl-14 pr-5 py-4 text-sm placeholder:text-text/30 focus:ring-4 focus:ring-accent/10 transition-all duration-300`}
+                />
+              </div>
 
               {touched.message && errors.message && (
                 <p className="text-red-400 text-xs flex items-center gap-1.5">
-                  <AlertCircle size={11} /> {errors.message}
+                  <AlertCircle size={12} /> {errors.message}
                 </p>
               )}
             </div>
 
-            <div className="flex items-center justify-between pt-1">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
               {status === "error" && (
-                <p className="text-red-400 text-sm flex items-center gap-1.5">
-                  <AlertCircle size={11} />
+                <p className="text-red-400 text-sm flex items-center gap-2">
+                  <AlertCircle size={14} />
                   Something went wrong. Please try again
                 </p>
               )}
 
-              <div className="ml-auto">
-                <button
-                  onClick={handleSubmit}
-                  disabled={status === "loading"}
-                  className={`flex items-center gap-2 text-sm font-semibold px-7 py-3 rounded-xl transition-all duration-200 cursor-pointer
-                    ${status === "loading"
-                      ? "bg-accent/50 text-text/50 cursor-not-allowed"
-                      : "bg-accent hover:bg-accent-hover text-text hover:shadow-lg hover:shadow-accent/20"
-                    }
-                  `}
-                >
-                  {status === "loading" ? (
-                    <>
-                      <Loader2 size={15} className="animate-spin" />
-                      <span>Loading...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Send Message</span>
-                      <Send size={15} />
-                    </>
-                  )}
-                </button>
-              </div>
+              <button
+                onClick={handleSubmit}
+                disabled={status === "loading"}
+                className={`ml-auto flex items-center gap-3 px-7 py-4 rounded-2xl font-semibold transition-all duration-300
+                  ${status === "loading"
+                    ? "bg-accent/50 text-text/50 cursor-not-allowed"
+                    : "bg-accent hover:bg-accent-hover text-text hover:shadow-lg hover:shadow-accent/20 cursor-pointer"
+                  }
+                `}
+              >
+                {status === "loading" ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" />
+                    <span>Loading...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Send Message</span>
+                    <Send size={16} />
+                  </>
+                )}
+              </button>
             </div>
           </div>
         </div>
