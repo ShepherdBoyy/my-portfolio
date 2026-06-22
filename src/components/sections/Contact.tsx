@@ -3,6 +3,7 @@ import { availabilityItems, initialFields, inputClass, validateForm } from "@/ut
 import { AlertCircle, Loader2, Mail, MessageSquare, PenSquare, Send, User } from "lucide-react";
 import { useState } from "react";
 import ContactSuccess from "./elements/contact/ContactSuccess";
+import { sendEmail } from "@/utils/emailjs.utils";
 
 export default function Contact() {
   const [fields, setFields] = useState<FormField>(initialFields)
@@ -42,6 +43,14 @@ export default function Contact() {
     }
     
     setStatus("loading")
+
+    try {
+      await sendEmail(fields)
+      setStatus("success");
+    } catch (error) {
+      console.error("EmailJS error: ",  error)
+      setStatus("error")
+    }
   }
 
   const handleReset = (): void => {
@@ -51,47 +60,40 @@ export default function Contact() {
     setStatus("idle");
   }
 
-  if (status === "success") {
-    return <ContactSuccess onReset={handleReset} />
-  }
-
   return (
     <div className="min-h-screen flex items-center px-6 sm:px-12 lg:py-26 xl:px-24 lg:pt-0">
       <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-14">
-        <div className="lg:w-[45%] flex flex-col justify-center">
-          <div className="flex flex-col gap-8 p-8 xl:p-10">
-            <div className="space-y-5">
-              <div className="flex items-center gap-4">
-                <span className="w-10 h-[3px] bg-accent rounded-full" />
+        <div className="lg:w-[45%] flex items-center">
+          <div className="w-full flex flex-col gap-10 px-2 lg:px-0">
+            <div className="space-y-6">
+              <h2 className="text-5xl xl:text-6xl font-bold leading-[1.1]">
+                Let's Build
+                <br />
+                Something <span className="text-accent">Great</span>
+              </h2>
 
-                <h2 className="text-4xl xl:text-5xl font-bold leading-tight">
-                  Let's Build
-                  <br />
-                  Something <span className="text-accent">Great</span>
-                </h2>
-              </div>
-
-              <p className="text-muted leading-relaxed max-w-lg">
+              <p className="max-w-xl text-muted leading-8 text-md">
                 Whether you need a full-stack developer, a modern web
-                application, or simply want to discuss an idea, I'd love to hear
-                from you.
+                application, or simply want to discuss an idea, I'd love
+                to hear from you. Let's create something meaningful together.
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 gap-5">
               {availabilityItems.map(({ icon: Icon, label }) => (
                 <div
                   key={label}
-                  className="flex items-center gap-4 rounded-2xl border border-border/50 bg-background/40 p-4 transition-all"
+                  className="bg-surface/70 rounded-3xl backdrop-blur-xl p-4"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
-                    <Icon
-                      size={18}
-                      className="text-accent transition-transform"
-                    />
-                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center">
+                      <Icon size={20} className="text-accent" />
+                    </div>
 
-                  <span className="text-sm font-medium text-text">{label}</span>
+                    <p className="text-sm font-semibold text-text">
+                      {label}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -249,6 +251,10 @@ export default function Contact() {
             </div>
           </div>
         </div>
+
+        {status === "success" && (
+          <ContactSuccess onReset={handleReset} />
+        )}
       </div>
     </div>
   );

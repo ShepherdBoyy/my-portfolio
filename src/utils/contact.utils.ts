@@ -42,7 +42,7 @@ export const validateForm = (fields: FormField): FormErrors => {
 
     if (!fields.message.trim())
         errors.message = "Message is required"
-    else if (fields.message.trim.length < 10)
+    else if (fields.message.trim().length < 10)
         errors.message = "Message must be atleast 10 characters"
         
     return errors
