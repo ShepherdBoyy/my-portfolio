@@ -4,6 +4,7 @@ import MainPage from "./components/layout/MainPage";
 import Index from "./pages/Projects/Index";
 import ScrollToTop from "./components/layout/ScrollToTop";
 import Show from "./pages/Projects/Show";
+import Footer from "./components/layout/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/projects/:slug" element={<Show />} />
         </Routes>
       </main>
+      <Footer />
     </BrowserRouter>
   );
 }
