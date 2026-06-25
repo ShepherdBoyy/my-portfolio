@@ -62,7 +62,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen flex items-center px-6 sm:px-12 lg:py-26 xl:px-24 lg:pt-0">
-      <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-14">
+      <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-14 py-20">
         <div className="lg:w-[45%] flex items-center">
           <div className="w-full flex flex-col gap-10 px-2 lg:px-0">
             <div className="space-y-6">
@@ -106,10 +106,6 @@ export default function Contact() {
               <h3 className="text-3xl font-bold text-text">
                 Send me a message
               </h3>
-
-              <p className="text-text/50 mt-2 text-sm leading-relaxed">
-                Have a project in mind or just want to say hello? Feel free to reach out.
-              </p>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
