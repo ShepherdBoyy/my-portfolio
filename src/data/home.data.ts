@@ -1,7 +1,11 @@
 import type { Stat } from "@/types";
+import { projects } from "./projects.data";
+
+const currentYear = new Date().getFullYear();
+const yearsOfExperience = currentYear - 2023;
 
 export const stats: Stat[] = [
-  { value: "2+", label: "Years of Experience" },
-  { value: "20+", label: "Projects Done" },
-  { value: "80+", label: "Happy Clients" },
+  { value: `${yearsOfExperience}`, label: "Years of Experience" },
+  { value: `${projects.length}`, label: "Projects Done" },
+  { value: "99.9%", label: "Client Satisfaction" },
 ];
