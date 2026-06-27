@@ -11,6 +11,7 @@ export type Certification = {
     issuer: string
     issuedDate: string
     image: string
+    pdfUrl: string
 }
 
 export type ExperienceTab = "work" | "academic"
