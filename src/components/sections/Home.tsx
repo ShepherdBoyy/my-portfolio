@@ -1,6 +1,15 @@
 import { stats } from "@/data/home.data";
 
 export default function Home() {
+  const handleDownloadResume = (): void => {
+    const link = document.createElement("a");
+    link.href = "/jhey-marc-abad-resume.pdf";
+    link.download = "Jhey_Marc_Abad_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen flex items-center px-6 sm:px-12 lg:py-26 xl:px-24 pt-12 lg:pt-0">
       <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
@@ -28,20 +37,29 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
             <button
               className="w-full sm:w-auto bg-accent hover:bg-accent-hover text-text px-9 py-3.5 rounded-md transition-all duration-300 hover:shadow-lg hover:shadow-accent/30 cursor-pointer"
-              onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() =>
+                document
+                  .getElementById("about")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
             >
               Get to Know Me
             </button>
 
-            {/* TODO: Add function to download resume */}
-            <button className="w-full sm:w-auto border border-border text-text px-9 py-3.5 rounded-md transition-all duration-300 hover:bg-surface cursor-pointer">
+            <button
+              className="w-full sm:w-auto border border-border text-text px-9 py-3.5 rounded-md transition-all duration-300 hover:bg-surface cursor-pointer"
+              onClick={handleDownloadResume}
+            >
               My Resume
             </button>
           </div>
 
           <div className="flex items-center bg-surface rounded-xl w-full sm:w-fit p-4">
             {stats.map((stat, index) => (
-              <div key={stat.label} className="flex items-center flex-1 sm:flex-none">
+              <div
+                key={stat.label}
+                className="flex items-center flex-1 sm:flex-none"
+              >
                 <div className="px-4 sm:px-8 py-2 flex-1 sm:flex-none lg:text-left">
                   <p className="text-accent text-2xl sm:text-3xl font-bold leading-tight">
                     {stat.value}
@@ -51,7 +69,7 @@ export default function Home() {
                   </p>
                 </div>
                 {index !== stats.length - 1 && (
-                  <div className="h-12 w-[1px] border border-border mx-1 sm:mx-2" />
+                  <div className="h-12 w-px border border-border mx-1 sm:mx-2" />
                 )}
               </div>
             ))}
@@ -59,7 +77,7 @@ export default function Home() {
         </div>
 
         <div className="flex-1 flex justify-center items-center order-first lg:order-last">
-          <div className="relative w-56 h-56 sm:w-80 sm:h-80 md:w-[380px] md:h-[380px] xl:w-[600px] xl:h-[600px]">
+          <div className="relative w-56 h-56 sm:w-80 sm:h-80 md:w-95 md:h-95 xl:w-150 xl:h-150">
             <div className="absolute inset-0 rounded-full bg-elevated" />
             <div className="absolute inset-0 rounded-full bg-accent/10 border blur-2xl" />
 
