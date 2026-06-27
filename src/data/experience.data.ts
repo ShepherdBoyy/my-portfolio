@@ -2,32 +2,32 @@ import type { ExperienceItem, Certification } from "@/types"
 
 export const workExperiences: ExperienceItem[] = [
   {
-    title:        "Frontend Developer",
-    organization: "Company Name",
-    date:         "Jan 2023 - Present",
-    address:      "Manila, Philippines",
-    url:          "https://company.com",
+    title:        "Web Developer",
+    organization: "Progressive Medical Corporation",
+    date:         "Aug 2025 - Present",
+    address:      "200 C. Raymundo Avenue Caniogan Pasig City",
+    url:          "https://pmc.ph/",
   },
   {
     title:        "Web Developer Intern",
-    organization: "Another Company",
-    date:         "Jun 2022 - Dec 2022",
-    address:      "Quezon City, Philippines",
-    url:          "https://anothercompany.com",
+    organization: "Wizzard Technologies, Inc.",
+    date:         "Mar 2025 - Jun 2025",
+    address:      "Unit 204 The Centerpoint Building Julia Vargas Ave. Ortigas Pasig City",
+    url:          "https://www.facebook.com/wtiwizzard/",
   },
   {
     title:        "Freelance Developer",
     organization: "Self Employed",
-    date:         "Jan 2022 - May 2022",
+    date:         "Jul 2023 - May 2024",
     address:      "Remote",
     url:          "https://github.com",
   },
   {
-    title:        "Junior Developer",
-    organization: "Startup Company",
-    date:         "Jun 2021 - Dec 2021",
-    address:      "Makati, Philippines",
-    url:          "https://startup.com",
+    title:        "Branch Administrator",
+    organization: "JnT Express",
+    date:         "Sep 2023 - Dec 2024",
+    address:      "Pinagbuhatan Pasig City",
+    url:          "https://www.jtexpress.ph/",
   },
 ]
 
