@@ -9,7 +9,7 @@ export default function CertModal({ onClose }: CertModalProps) {
         onClick={onClose}
     >
         <div
-            className="w-full max-w-2xl max-h-[85vh] bg-surface rounded-3xl flex flex-col shadow-2xl shadow-black/60 border border-border/60"
+            className="w-full max-w-4xl max-h-[85vh] bg-surface rounded-3xl flex flex-col shadow-2xl shadow-black/60 border border-border/60"
             onClick={(e) => e.stopPropagation()}
         >
             <div className="flex items-center justify-between px-6 py-5 border-b border-border/60">
@@ -37,17 +37,22 @@ export default function CertModal({ onClose }: CertModalProps) {
             </div>
 
             <div className="overflow-y-auto p-6 scrollbar-hide">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     {certifications.map((cert) => (
                         <div
                             key={cert.name}
                             className="group bg-elevated rounded-xl overflow-hidden border border-border/60 hover:border-accent/40 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-1 cursor-pointer"
+                            onClick={() => window.open(cert.pdfUrl, "_blank")}
                         >
                             <div className="relative h-36 bg-background overflow-hidden">
                                 <img
                                     src={cert.image}
                                     alt={cert.name}
                                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    onError={(e) => {
+                                        const target = e.target as HTMLImageElement
+                                        target.style.display = "none"
+                                    }}
                                 />
 
                                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
