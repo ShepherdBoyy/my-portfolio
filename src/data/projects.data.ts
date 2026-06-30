@@ -8,18 +8,23 @@ const project = (p: Omit<Project, "slug">): Project => ({
 
 export const projects: Project[] = [
   project({
-    title:       "Portfolio Website",
+    title:       "Track Wise",
     description: "My personal portfolio website built with React and TypeScript.",
     details:     "A fully responsive personal portfolio website showcasing my skills, experience, and projects. Built with modern web technologies and best practices in mind.",
     images:      [
-      "/projects/portfolio/img1.jpg",
-      "/projects/portfolio/img2.jpg",
-      "/projects/portfolio/img3.jpg",
+      "/projects/track-wise/img1.png",
+      "/projects/track-wise/img2.png",
+      "/projects/track-wise/img3.png",
+      "/projects/track-wise/img4.png",
+      "/projects/track-wise/img5.png",
+      "/projects/track-wise/img6.png",
+      "/projects/track-wise/img7.png",
+      "/projects/track-wise/img8.png",
     ],
-    category:    "Frontend",
+    category:    "Full Stack",
     platform:    "Website",
     techStack:   ["React", "TypeScript", "Tailwind CSS", "Vite"],
-    githubUrl:   "https://github.com/yourusername/portfolio",
+    githubUrl:   "https://github.com/ShepherdBoyy/kart-nest",
     isFeatured:  true,
   }),
   project({
