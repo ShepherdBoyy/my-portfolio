@@ -11,16 +11,12 @@ export default function FeaturedCard({ project }: FeaturedCardProps) {
       className="group relative w-full rounded-3xl overflow-hidden border border-border/60 bg-surface/80 backdrop-blur-md cursor-pointer transition-all duration-500 hover:border-accent/40 hover:shadow-2xl hover:shadow-accent/10"
     >
       <div className="flex flex-col lg:flex-row">
-        <div className="relative w-full lg:w-[55%] h-56 lg:h-72 overflow-hidden bg-elevated flex-shrink-0">
-          <div className="absolute inset-0 flex items-center justify-center bg-elevated">
-            <span className="text-muted text-sm">Project Image</span>
-          </div>
-
-          {/* <img
+        <div className="relative w-full lg:w-[55%] h-56 lg:h-72 overflow-hidden bg-elevated shrink-0">
+          <img
             src={project.images[0]}
             alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          /> */}
+            className="w-full h-full object-cover"
+          />
         </div>
 
         <div className="flex-1 flex flex-col justify-between p-5 lg:p-7">

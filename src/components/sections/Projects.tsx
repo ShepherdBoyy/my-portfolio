@@ -14,7 +14,7 @@ export default function Projects() {
       <div className="w-full flex flex-col gap-5">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <span className="w-10 h-[3px] bg-accent rounded-full" />
+            <span className="w-10 h-0.75 bg-accent rounded-full" />
             <h2 className="text-3xl xl:text-4xl font-bold">
               My <span className="text-accent">Projects</span>
             </h2>
