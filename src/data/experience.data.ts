@@ -2,7 +2,7 @@ import type { ExperienceItem, Certification } from "@/types"
 
 export const workExperiences: ExperienceItem[] = [
   {
-    title:        "Web Developer",
+    title:        "Backend Web Developer",
     organization: "Progressive Medical Corporation",
     date:         "Aug 2025 - Present",
     address:      "200 C. Raymundo Avenue Caniogan Pasig City",
