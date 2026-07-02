@@ -5,7 +5,7 @@ import {
 } from "@/data/projects.data";
 import ImageSlider from "./elements/ImageSlider";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, ChevronLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export default function Show() {
   const { slug } = useParams<{ slug: string }>();
@@ -50,7 +50,7 @@ export default function Show() {
         onClick={() => navigate("/projects")}
         className="flex items-center gap-2 text-muted hover:text-text text-sm font-semibold transition-colors duration-200 cursor-pointer w-fit group"
       >
-        <ChevronLeft
+        <ArrowLeft
           size={16}
           className="transition-transform duration-200 group-hover:-translate-x-1"
         />
@@ -58,7 +58,7 @@ export default function Show() {
       </button>
 
       <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
-        <div className="w-full lg:w-[55%] flex-shrink-0">
+        <div className="w-full lg:w-[55%] shrink-0">
           <ImageSlider images={project.images} title={project.title} />
         </div>
 
@@ -139,7 +139,7 @@ export default function Show() {
           >
             <ArrowLeft
               size={18}
-              className="text-muted group-hover:text-accent flex-shrink-0 transition-all duration-200 group-hover:-translate-x-1"
+              className="text-muted group-hover:text-accent shrink-0 transition-all duration-200 group-hover:-translate-x-1"
             />
 
             <div className="flex flex-col items-start gap-0.5 overflow-hidden">
@@ -167,7 +167,7 @@ export default function Show() {
 
             <ArrowRight
               size={18}
-              className="text-muted group-hover:text-accent flex-shrink-0 transition-all duration-200 group-hover:-translate-x-1"
+              className="text-muted group-hover:text-accent shrink-0 transition-all duration-200 group-hover:-translate-x-1"
             />
           </button>
         ) : (

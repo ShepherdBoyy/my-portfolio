@@ -23,7 +23,7 @@ export default function ImageSlider({ images = [], title }: SliderProps) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="relative w-full h-72 sm:h-[480px] rounded-3xl overflow-hidden bg-elevated border border-border/60 group">
+      <div className="relative w-full h-72 sm:h-120 rounded-3xl overflow-hidden bg-elevated border border-border/60 group">
         {imgError ? (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-muted">
             <ImageOff size={32} />
@@ -64,7 +64,7 @@ export default function ImageSlider({ images = [], title }: SliderProps) {
         )}
 
         {images.length > 1 && (
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/40 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-16 bg-linear-to-t from-black/40 to-transparent" />
         )}
       </div>
 
@@ -92,7 +92,7 @@ export default function ImageSlider({ images = [], title }: SliderProps) {
                 <button
                     key={index}
                     onClick={() => handleDotClick(index)}
-                    className={`flex-shrink-0 w-20 h-14 rounded-xl overflow-hidden border-2 transition-all duration-200 cursor-pointer
+                    className={`shrink-0 w-20 h-14 rounded-xl overflow-hidden border-2 transition-all duration-200 cursor-pointer
                         ${currentIndex === index
                             ? "border-accent shadow-lg shadow-accent/20"
                             : "border-border/60 opacity-60 hover:opacity-100"
