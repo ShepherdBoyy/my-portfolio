@@ -73,7 +73,12 @@ export default function Index() {
     <div className="min-h-screen flex flex-col px-6 sm:px-12 xl:px-24 py-10">
       <div className="flex flex-col gap-6">
         <button
-          onClick={() => navigate("/")}
+          onClick={() => {
+            navigate("/")
+            setTimeout(() => {
+              document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
+            }, 100)
+          }}
           className="flex items-center gap-2 text-muted hover:text-text text-sm font-semibold transition-colors duration-200 cursor-pointer w-fit group"
         >
           <ArrowLeft
