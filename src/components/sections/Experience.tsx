@@ -15,12 +15,12 @@ export default function Experience() {
     activeTab === "work" ? workExperiences : academicBackground;
 
   return (
-    <div className="min-h-screen flex flex-col justify-between px-6 sm:px-12 lg:py-26 xl:px-24 lg:pt-0">
-      <div className="flex items-center">
-        <div className="flex items-center gap-2 bg-surface rounded-xl p-1.5 mt-6">
+    <div className="flex-1 min-h-0 flex flex-col gap-6 sm:gap-8 px-6 sm:px-12 xl:px-24 py-10">
+      <div className="flex items-center justify-center sm:justify-start">
+        <div className="grid grid-cols-2 sm:inline-flex items-center gap-2 bg-surface rounded-xl p-1.5 w-full sm:w-auto mt-6">
           <button
             onClick={() => setActiveTab("work")}
-            className={`px-6 py-2.5 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer
+            className={`px-3 sm:px-6 py-2.5 rounded-lg text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer whitespace-nowrap
               ${
                 activeTab === "work"
                   ? "bg-accent text-text shadow-lg shadow-accent/20"
@@ -31,7 +31,7 @@ export default function Experience() {
           </button>
           <button
             onClick={() => setActiveTab("academic")}
-            className={`px-6 py-2.5 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer
+            className={`px-3 sm:px-6 py-2.5 rounded-lg text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer whitespace-nowrap
               ${
                 activeTab === "academic"
                   ? "bg-accent text-text shadow-lg shadow-accent/20"
@@ -59,7 +59,7 @@ export default function Experience() {
         </div>
       </div>
 
-      <div className="flex justify-end pb-6">
+      <div className="flex justify-center sm:justify-end">
         <button
           onClick={() => setCertModalOpen(true)}
           className="flex items-center gap-3 cursor-pointer bg-accent text-text px-5 py-3 rounded-2xl shadow-xl hover:scale-105 active:scale-95 transition-all duration-300"

@@ -10,7 +10,7 @@ export default function Projects() {
   const gridItems = featuredProjects.slice(1, 4)
 
   return (
-    <div className="min-h-screen flex items-center px-6 sm:px-12 lg:py-26 xl:px-24 lg:pt-0">
+    <div className="flex-1 min-h-0 flex items-center px-6 sm:px-12 xl:px-24 py-5">
       <div className="w-full flex flex-col gap-5">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">

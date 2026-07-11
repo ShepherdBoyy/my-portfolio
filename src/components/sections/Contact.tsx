@@ -61,7 +61,7 @@ export default function Contact() {
   }
 
   return (
-    <div className="min-h-screen flex items-center px-6 sm:px-12 lg:py-26 xl:px-24 lg:pt-0">
+    <div className="flex-1 min-h-0 flex flex-col items-center justify-center px-6 sm:px-12 xl:px-24 overflow-hidden">
       <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-14 py-20">
         <div className="lg:w-[45%] flex items-center">
           <div className="w-full flex flex-col gap-10 px-2 lg:px-0">
