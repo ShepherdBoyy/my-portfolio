@@ -1,5 +1,50 @@
-import type { SkillCategory } from "@/types";
+import type { Breakpoint, SkillCategory } from "@/types";
 import { Brain, CodeXml, Server, Wrench } from "lucide-react";
+
+export const SIZES: Record<
+    Breakpoint,
+    {
+        size: number,
+        sunSize: number,
+        innerRadius: number,
+        outerRadius: number,
+        innerIconSize: number,
+        outerIconSize: number,
+        innerDuration: number,
+        outerDuration: number,
+    }
+> = {
+    mobile: {
+        size: 240,
+        sunSize: 60,
+        innerRadius: 95,
+        outerRadius: 95,
+        innerIconSize: 55,
+        outerIconSize: 55,
+        innerDuration: 30,
+        outerDuration: 30,
+    },
+    tablet: {
+        size: 280,
+        sunSize: 68,
+        innerRadius: 85,
+        outerRadius: 115,
+        innerIconSize: 55,
+        outerIconSize: 49,
+        innerDuration: 24,
+        outerDuration: 40,
+    },
+    desktop: {
+        size: 400,
+        sunSize: 100,
+        innerRadius: 100,
+        outerRadius: 180,
+        innerIconSize: 65,
+        outerIconSize: 55,
+        innerDuration: 22,
+        outerDuration: 38,
+    },
+}
 
 export const skillCategories: SkillCategory[] = [
     {
