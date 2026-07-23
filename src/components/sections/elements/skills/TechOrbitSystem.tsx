@@ -35,7 +35,7 @@ export default function TechOrbitSystem({
       ))}
 
       {rings.map((r, i) => (
-        <div>
+        <div key={i}>
           {orbitRings[i]?.map((skill, j) => (
             <SatelliteIcon
               key={skill.name}
