@@ -11,7 +11,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex-1 min-h-0 flex items-center px-6 sm:px-12 xl:px-24 py-10">
+    <div className="flex-1 min-h-0 flex items-center px-6 sm:px-12 xl:px-24 py-15">
       <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
         <div className="flex-1 flex flex-col gap-10 text-center lg:text-left items-center lg:items-start">
           <div className="space-y-2">
@@ -76,18 +76,15 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex-1 flex justify-center items-center order-first lg:order-last">
+        <div className="flex-1 flex justify-center items-end order-first lg:order-last">
           <div className="relative w-56 h-56 sm:w-80 sm:h-80 md:w-95 md:h-95 xl:w-150 xl:h-150">
             <div className="absolute inset-0 rounded-full bg-elevated" />
-            <div className="absolute inset-0 rounded-full bg-accent/10 border blur-2xl" />
 
-            {/* TODO: Add my photo */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-              <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-                <span className="text-muted text-xl">👤</span>
-              </div>
-              <span className="text-muted text-xs">My picture heheheh</span>
-            </div>
+            <img
+              src="/home-profile.png"
+              alt="Jhey Marc Abad"
+              className="absolute left-1/2 -translate-x-1/2 bottom-0 object-contain object-bottom rounded-full"
+            />
           </div>
         </div>
       </div>
