@@ -8,9 +8,9 @@ import MobileSidebar from "./MobileSidebar";
 const navItems: NavItem[] = [
   { label: "Home", sectionId: "home" },
   { label: "About", sectionId: "about" },
+  { label: "Experience", sectionId: "experience" },
   { label: "Skills", sectionId: "skills" },
   { label: "Projects", sectionId: "projects" },
-  { label: "Experience", sectionId: "experience" },
   { label: "Contact", sectionId: "contact" },
 ];
 

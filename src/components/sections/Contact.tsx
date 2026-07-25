@@ -110,7 +110,7 @@ export default function Contact() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div className="flex flex-col gap-2">
-                <label className="text-text text-[11px] font-semibold tracking-[0.25em] text-text/40 font-medium uppercase">
+                <label className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase">
                   Full Name
                 </label>
 
@@ -136,7 +136,7 @@ export default function Contact() {
               </div>
               
               <div className="flex flex-col gap-2">
-                <label className="text-text text-[11px] font-semibold tracking-[0.25em] text-text/40 font-medium uppercase">
+                <label className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase">
                   Email
                 </label>
 
@@ -163,7 +163,7 @@ export default function Contact() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-text text-[11px] font-semibold tracking-[0.25em] text-text/40 font-medium uppercase">
+              <label className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase">
                 Subject
               </label>
 
@@ -189,7 +189,7 @@ export default function Contact() {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-text text-[11px] font-semibold tracking-[0.25em] text-text/40 font-medium uppercase">
+              <label className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase">
                 Message
               </label>
 
