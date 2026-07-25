@@ -48,6 +48,7 @@ export const orbitRings: Skill[][] = [
       { name: "React Router", icon: "/icons/reactrouter.png"},
       { name: "Inertia.js", icon: "/icons/inertiajs.png"},
       { name: "Google Colab", icon: "/icons/googlecolab.png"},
+      { name: "Figma", icon: "/icons/figma.png"},
     ]
 ]
 

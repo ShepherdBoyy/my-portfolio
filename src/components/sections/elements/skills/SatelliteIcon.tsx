@@ -23,7 +23,10 @@ export default function SatelliteIcon({
         marginTop: -size / 2,
         marginLeft: -size / 2,
         ["--base-angle" as string]: `${angle}deg`,
-        animation: `orbit-revolve-${direction} ${duration}s linear infinite`,
+        animationName: `orbit-revolve-${direction}`,
+        animationDuration: `${duration}s`,
+        animationTimingFunction: "linear",
+        animationIterationCount: "infinite",
         animationPlayState: paused ? "paused" : "running",
         transform: `rotate(calc(var(--base-angle) + var(--a, 0deg))) translate(${radius}px) rotate(calc(-1 * (var(--base-angle) + var(--a, 0deg))))`
       } as React.CSSProperties}
