@@ -1,4 +1,6 @@
 import { stats } from "@/data/home.data";
+import { fadeLeft, heroStagger, slideUp, staggerContainer, viewport, wordReveal } from "@/utils/animations";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const handleDownloadResume = (): void => {
@@ -13,28 +15,56 @@ export default function Home() {
   return (
     <div className="flex-1 min-h-0 flex items-center px-6 sm:px-12 xl:px-24 py-15">
       <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
-        <div className="flex-1 flex flex-col gap-10 text-center lg:text-left items-center lg:items-start">
-          <div className="space-y-2">
+        <motion.div
+          className="flex-1 flex flex-col gap-10 text-center lg:text-left items-center lg:items-start"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
+          <motion.div variants={slideUp} className="space-y-2">
             <p className="text-muted text-lg">Hi I am</p>
             <h2 className="text-2xl sm:text-3xl font-semibold tracking-wide">
               Jhey Marc Abad
             </h2>
+          </motion.div>
+
+          <div className="leading-[0.95] overflow-hidden">
+            <motion.div
+              variants={heroStagger}
+              className="flex flex-col"
+            >
+              <div className="overflow-hidden">
+                <motion.h1
+                  className="text-5xl sm:text-6xl xl:text-8xl font-extrabold text-accent"
+                  variants={wordReveal}
+                >
+                  FULL STACK
+                </motion.h1>
+              </div>
+
+              <div className="overflow-hidden">
+                <motion.h1
+                  className="text-5xl sm:text-6xl xl:text-8xl font-extrabold text-accent"
+                  variants={wordReveal}
+                >
+                  DEVELOPER
+                </motion.h1>
+              </div>
+            </motion.div>
           </div>
 
-          <div className="leading-[0.95]">
-            <h1 className="text-5xl sm:text-6xl xl:text-8xl font-extrabold text-accent">
-              FULL STACK
-            </h1>
-            <h1 className="text-5xl sm:text-6xl xl:text-8xl font-extrabold text-accent">
-              DEVELOPER
-            </h1>
-          </div>
-
-          <p className="text-muted max-w-lg text-lg leading-relaxed">
+          <motion.p
+            variants={slideUp}
+            className="text-muted max-w-lg text-lg leading-relaxed"
+          >
             I build things that help make the world a better place
-          </p>
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
+          <motion.div
+            variants={slideUp}
+            className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto"
+          >
             <button
               className="w-full sm:w-auto bg-accent hover:bg-accent-hover text-text px-9 py-3.5 rounded-md transition-all duration-300 hover:shadow-lg hover:shadow-accent/30 cursor-pointer"
               onClick={() =>
@@ -52,9 +82,12 @@ export default function Home() {
             >
               My Resume
             </button>
-          </div>
+          </motion.div>
 
-          <div className="flex items-center bg-surface rounded-xl w-full sm:w-fit p-4">
+          <motion.div
+            variants={slideUp}
+            className="flex items-center bg-surface rounded-xl w-full sm:w-fit p-4"
+          >
             {stats.map((stat, index) => (
               <div
                 key={stat.label}
@@ -73,10 +106,16 @@ export default function Home() {
                 )}
               </div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="flex-1 flex justify-center items-end order-first lg:order-last">
+        <motion.div
+          className="flex-1 flex justify-center items-end order-first lg:order-last"
+          variants={fadeLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           <div className="relative w-56 h-56 sm:w-80 sm:h-80 md:w-95 md:h-95 xl:w-150 xl:h-150">
             <div className="absolute inset-0 rounded-full bg-elevated" />
 
@@ -86,7 +125,7 @@ export default function Home() {
               className="absolute left-1/2 -translate-x-1/2 bottom-0 object-contain object-bottom rounded-full"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

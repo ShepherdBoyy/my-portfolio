@@ -1,10 +1,8 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
-import MainPage from "./components/layout/MainPage";
-import Index from "./pages/Projects/Index";
 import ScrollToTop from "./components/layout/ScrollToTop";
-import Show from "./pages/Projects/Show";
 import Footer from "./components/layout/Footer";
+import AnimatedRoutes from "./components/layout/AnimatedRoutes";
 
 function App() {
   return (
@@ -12,11 +10,7 @@ function App() {
       <ScrollToTop />
       <Navbar />
       <main>
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/projects" element={<Index />} />
-          <Route path="/projects/:slug" element={<Show />} />
-        </Routes>
+        <AnimatedRoutes />
       </main>
       <Footer />
     </BrowserRouter>
