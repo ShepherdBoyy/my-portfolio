@@ -15,9 +15,9 @@ export const orbitRings: Skill[][] = [
       { name: "Python", icon: "/icons/python.png"},
       { name: "Node.js", icon: "/icons/nodejs.png"},
       { name: "CSS3", icon: "/icons/css3.png"},
-      { name: "Flask", icon: "/icons/flask.png"},
       { name: "Tailwind CSS", icon: "/icons/tailwindcss.png"},
       { name: "Vite", icon: "/icons/vite.png"},
+      { name: "XAMPP", icon: "/icons/xampp.png"},
     ],
     [
       { name: "Bootstrap", icon: "/icons/bootstrap.png"},
@@ -30,6 +30,7 @@ export const orbitRings: Skill[][] = [
       { name: "Scikit-learn", icon: "/icons/scikit-learn.png"},
       { name: "SQLAlchemy", icon: "/icons/sqlalchemy.png"},
       { name: "TensorFlow", icon: "/icons/tensorflow.png"},
+      { name: "Flask", icon: "/icons/flask.png"},
     ],
     [
       { name: "Axios", icon: "/icons/axios.png"},
