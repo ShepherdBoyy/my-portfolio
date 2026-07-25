@@ -10,9 +10,13 @@ export default function DesktopNav({
       <div className="w-full px-12 xl:px-24 h-20 flex items-center justify-between">
         <button
           onClick={() => onNavClick("home")}
-          className="text-accent font-bold text-2xl tracking-widest uppercase cursor-pointer"
+          className="cursor-pointer"
         >
-          Logo
+          <img
+            src="/logo.png"
+            alt="Logo"
+            className="w-18"
+          />
         </button>
 
         <ul className="hidden md:flex items-center gap-6 lg:gap-12 xl:gap-20">

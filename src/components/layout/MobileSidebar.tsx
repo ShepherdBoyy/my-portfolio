@@ -30,16 +30,20 @@ export default function MobileSidebar({
       <div className={`absolute top-0 right-0 h-full w-72 bg-surface flex flex-col px-6 py-8 gap-8 transition-transform duration-300 ease-in-out
             ${isOpen ? "translate-x-0 pointer-events-auto" : "translate-x-full pointer-events-none"}
         `}>
-        <div className="flex items-center justify-between">
+        <div className="relative flex items-center justify-center">
           <button
             onClick={() => onNavClick("home")}
-            className="text-accent font-bold text-xl transition-colors duration-200 cursor-pointer"
+            className="cursor-pointer"
           >
-            Logo
+            <img
+              src="/logo.png"
+              alt="Logo"
+              className="w-50"
+            />
           </button>
           <button
             onClick={onClose}
-            className="text-muted hover:text-text transition-colors duration-200 cursor-pointer"
+            className="absolute top-0 right-0 text-muted hover:text-text transition-colors duration-200 cursor-pointer"
             aria-label="Close Menu"
           >
             <X />
