@@ -4,7 +4,6 @@ export default function About() {
   return (
     <div className="flex-1 min-h-0 flex items-center px-6 sm:px-12 xl:px-24 py-10">
       <div className="w-full flex flex-col lg:flex-row items-center gap-12">
-        {/* LEFT */}
         <div className="lg:w-[35%] flex justify-center">
           <div className="w-full max-w-70 sm:max-w-[320px] xl:max-w-120 aspect-4/5 rounded-3xl overflow-hidden shadow-2xl shadow-black/40 flex items-center justify-center">
             <img
@@ -15,7 +14,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* RIGHT */}
         <div className="lg:w-[65%] flex flex-col gap-14">
           <div className="max-w-5xl space-y-6">
             <div className="flex items-center gap-4">

@@ -20,7 +20,7 @@ export const workExperiences: ExperienceItem[] = [
     organization: "Self Employed",
     date:         "Jul 2023 - May 2024",
     address:      "Remote",
-    url:          "https://github.com",
+    url:          "https://github.com/ShepherdBoyy",
   },
   {
     title:        "Branch Administrator",
