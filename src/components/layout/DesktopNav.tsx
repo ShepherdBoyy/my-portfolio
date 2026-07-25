@@ -15,7 +15,7 @@ export default function DesktopNav({
           <img
             src="/logo.png"
             alt="Logo"
-            className="w-18"
+            className="w-15"
           />
         </button>
 

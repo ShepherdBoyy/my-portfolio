@@ -1,64 +1,83 @@
 import type { FormField, FormErrors, FormStatus } from "@/types";
-import { availabilityItems, initialFields, inputClass, validateForm } from "@/utils/contact.utils";
-import { AlertCircle, Loader2, Mail, MessageSquare, PenSquare, Send, User } from "lucide-react";
+import {
+  availabilityItems,
+  initialFields,
+  inputClass,
+  validateForm,
+} from "@/utils/contact.utils";
+import {
+  AlertCircle,
+  Loader2,
+  Mail,
+  MessageSquare,
+  PenSquare,
+  Send,
+  User,
+} from "lucide-react";
 import { useState } from "react";
 import ContactSuccess from "./elements/contact/ContactSuccess";
 import { sendEmail } from "@/utils/emailjs.utils";
 
 export default function Contact() {
-  const [fields, setFields] = useState<FormField>(initialFields)
-  const [errors, setErrors] = useState<FormErrors>({})
-  const [touched, setTouched] = useState<Partial<Record<keyof FormField, boolean>>>({})
-  const [status, setStatus] = useState<FormStatus>("idle")
+  const [fields, setFields] = useState<FormField>(initialFields);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState<
+    Partial<Record<keyof FormField, boolean>>
+  >({});
+  const [status, setStatus] = useState<FormStatus>("idle");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-    const { name, value } = e.target
-    setFields((prev) => ({ ...prev, [name]: value }))
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ): void => {
+    const { name, value } = e.target;
+    setFields((prev) => ({ ...prev, [name]: value }));
 
     if (errors[name as keyof FormErrors]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }))
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
-  }
+  };
 
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-    const { name } = e.target
-    setTouched((prev) => ({ ...prev, [name]: true }))
-    const fieldErrors = validateForm(fields)
+  const handleBlur = (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ): void => {
+    const { name } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    const fieldErrors = validateForm(fields);
 
     if (fieldErrors[name as keyof FormErrors]) {
       setErrors((prev) => ({
         ...prev,
-        [name]: fieldErrors[name as keyof FormErrors]
-      }))
+        [name]: fieldErrors[name as keyof FormErrors],
+      }));
     }
-  }
+  };
 
   const handleSubmit = async (): Promise<void> => {
-    const fieldErrors = validateForm(fields)
-    setTouched({ name: true, email: true, subject: true, message: true })
+    const fieldErrors = validateForm(fields);
+    setTouched({ name: true, email: true, subject: true, message: true });
 
     if (Object.keys(fieldErrors).length > 0) {
-      setErrors(fieldErrors)
-      return
+      setErrors(fieldErrors);
+      return;
     }
-    
-    setStatus("loading")
+
+    setStatus("loading");
 
     try {
-      await sendEmail(fields)
+      await sendEmail(fields);
       setStatus("success");
     } catch (error) {
-      console.error("EmailJS error: ",  error)
-      setStatus("error")
+      console.error("EmailJS error: ", error);
+      setStatus("error");
     }
-  }
+  };
 
   const handleReset = (): void => {
     setFields(initialFields);
     setErrors({});
-    setTouched({})
+    setTouched({});
     setStatus("idle");
-  }
+  };
 
   return (
     <div className="flex-1 min-h-0 flex flex-col items-center justify-center px-6 sm:px-12 xl:px-24 overflow-hidden">
@@ -73,9 +92,11 @@ export default function Contact() {
               </h2>
 
               <p className="max-w-xl text-muted leading-8 text-md">
-                Whether you need a full-stack developer, a modern web
-                application, or simply want to discuss an idea, I'd love
-                to hear from you. Let's create something meaningful together.
+                Coffee chats, big projects, half-baked ideas — I'm here for all
+                of it. I build full-stack web apps and genuinely love talking
+                through a new idea, whatever stage it's at. So if something's
+                brewing, let's talk — and let's build something meaningful
+                together.
               </p>
             </div>
 
@@ -90,9 +111,7 @@ export default function Contact() {
                       <Icon size={20} className="text-accent" />
                     </div>
 
-                    <p className="text-sm font-semibold text-text">
-                      {label}
-                    </p>
+                    <p className="text-sm font-semibold text-text">{label}</p>
                   </div>
                 </div>
               ))}
@@ -107,19 +126,24 @@ export default function Contact() {
                 Send me a message
               </h3>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div className="flex flex-col gap-2">
-                <label className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase">
+                <label htmlFor="name" className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase">
                   Full Name
                 </label>
 
                 <div className="relative">
-                  <User size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-text/30" />
+                  <User
+                    size={18}
+                    className="absolute left-5 top-1/2 -translate-y-1/2 text-text/30"
+                  />
 
                   <input
                     type="text"
                     name="name"
+                    id="name"
+                    autoComplete="name"
                     value={fields.name}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -134,18 +158,23 @@ export default function Contact() {
                   </p>
                 )}
               </div>
-              
+
               <div className="flex flex-col gap-2">
-                <label className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase">
+                <label htmlFor="email" className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase">
                   Email
                 </label>
 
                 <div className="relative">
-                  <Mail size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-text/30" />
+                  <Mail
+                    size={18}
+                    className="absolute left-5 top-1/2 -translate-y-1/2 text-text/30"
+                  />
 
                   <input
                     type="email"
                     name="email"
+                    id="email"
+                    autoComplete="email"
                     value={fields.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -163,16 +192,20 @@ export default function Contact() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase">
+              <label htmlFor="subject" className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase">
                 Subject
               </label>
 
               <div className="relative">
-                <PenSquare size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-text/30" />
+                <PenSquare
+                  size={18}
+                  className="absolute left-5 top-1/2 -translate-y-1/2 text-text/30"
+                />
 
                 <input
                   type="text"
                   name="subject"
+                  id="subject"
                   value={fields.subject}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -189,15 +222,19 @@ export default function Contact() {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase">
+              <label htmlFor="message" className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase">
                 Message
               </label>
 
               <div className="relative">
-                <MessageSquare size={18} className="absolute left-6 top-5 text-text/30" />
-                
+                <MessageSquare
+                  size={18}
+                  className="absolute left-6 top-5 text-text/30"
+                />
+
                 <textarea
                   name="message"
+                  id="message"
                   value={fields.message}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -226,9 +263,10 @@ export default function Contact() {
                 onClick={handleSubmit}
                 disabled={status === "loading"}
                 className={`ml-auto flex items-center gap-3 px-7 py-4 rounded-2xl font-semibold transition-all duration-300
-                  ${status === "loading"
-                    ? "bg-accent/50 text-text/50 cursor-not-allowed"
-                    : "bg-accent hover:bg-accent-hover text-text hover:shadow-lg hover:shadow-accent/20 cursor-pointer"
+                  ${
+                    status === "loading"
+                      ? "bg-accent/50 text-text/50 cursor-not-allowed"
+                      : "bg-accent hover:bg-accent-hover text-text hover:shadow-lg hover:shadow-accent/20 cursor-pointer"
                   }
                 `}
               >
@@ -248,9 +286,7 @@ export default function Contact() {
           </div>
         </div>
 
-        {status === "success" && (
-          <ContactSuccess onReset={handleReset} />
-        )}
+        {status === "success" && <ContactSuccess onReset={handleReset} />}
       </div>
     </div>
   );
