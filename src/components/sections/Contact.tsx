@@ -17,6 +17,8 @@ import {
 import { useState } from "react";
 import ContactSuccess from "./elements/contact/ContactSuccess";
 import { sendEmail } from "@/utils/emailjs.utils";
+import { motion } from "framer-motion";
+import { fadeLeft, fadeRight, viewport } from "@/utils/animations";
 
 export default function Contact() {
   const [fields, setFields] = useState<FormField>(initialFields);
@@ -82,7 +84,13 @@ export default function Contact() {
   return (
     <div className="flex-1 min-h-0 flex flex-col items-center justify-center px-6 sm:px-12 xl:px-24 overflow-hidden">
       <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-14 py-20">
-        <div className="lg:w-[45%] flex items-center">
+        <motion.div
+          className="lg:w-[45%] flex items-center"
+          variants={fadeRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           <div className="w-full flex flex-col gap-10 px-2 lg:px-0">
             <div className="space-y-6">
               <h2 className="text-5xl xl:text-6xl font-bold leading-[1.1]">
@@ -117,9 +125,15 @@ export default function Contact() {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="flex-1">
+        <motion.div
+          className="flex-1"
+          variants={fadeLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           <div className="bg-surface/80 backdrop-blur-xl rounded-4xl p-7 sm:p-9 shadow-2xl shadow-black/10 flex flex-col gap-7">
             <div>
               <h3 className="text-3xl font-bold text-text">
@@ -284,7 +298,7 @@ export default function Contact() {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {status === "success" && <ContactSuccess onReset={handleReset} />}
       </div>

@@ -8,6 +8,8 @@ import { projects } from "@/data/projects.data";
 import ProjectCard from "@/components/sections/elements/projects/ProjectCard";
 import Pagination from "./elements/Pagination";
 import { useNavigate } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { cardVariant, fadeUp, staggerContainer } from "@/utils/animations";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -65,19 +67,24 @@ export default function Index() {
   };
 
   const handlePageChange = (page: number): void => {
-    setCurrentPage(page)
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="min-h-screen flex flex-col px-6 sm:px-12 xl:px-24 py-10">
       <div className="flex flex-col gap-6">
-        <button
+        <motion.button
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
           onClick={() => {
-            navigate("/")
+            navigate("/");
             setTimeout(() => {
-              document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
-            }, 100)
+              document
+                .getElementById("projects")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }, 100);
           }}
           className="flex items-center gap-2 text-muted hover:text-text text-sm font-semibold transition-colors duration-200 cursor-pointer w-fit group"
         >
@@ -86,17 +93,27 @@ export default function Index() {
             className="transition-transform duration-200 group-hover:-translate-x-1"
           />
           <span>Back</span>
-        </button>
+        </motion.button>
 
-        <div className="flex items-center justify-between">
+        <motion.div
+          className="flex items-center justify-between"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+        >
           <h1 className="text-3xl xl:text-4xl font-bold">
             All <span className="text-accent">Projects</span>
           </h1>
 
           <SearchInput value={searchQuery} onChange={handleSearchChange} />
-        </div>
+        </motion.div>
 
-        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+        <motion.div
+          className="flex flex-col sm:flex-row sm:items-center gap-4"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+        >
           <PlatformDropdown
             activePlatform={activePlatform}
             onPlatformChange={handlePlatformChange}
@@ -118,16 +135,37 @@ export default function Index() {
               <span>Clear Filters</span>
             </button>
           )}
-        </div>
+        </motion.div>
 
         {paginatedProjects.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {paginatedProjects.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
-          </div>
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+          >
+            <AnimatePresence mode="popLayout">
+              {paginatedProjects.map((project) => (
+                <motion.div
+                  key={project.slug}
+                  variants={cardVariant}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  layout
+                >
+                  <ProjectCard project={project} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         ) : (
-          <div className="flex-1 flex flex-col items-center justify-center gap-5 py-20">
+          <motion.div
+            className="flex-1 flex flex-col items-center justify-center gap-5 py-20"
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+          >
             <div className="w-16 h-16 rounded-2xl bg-surface border border-border/60 flex items-center justify-center">
               <span className="text-2xl">🔍</span>
             </div>
@@ -146,7 +184,7 @@ export default function Index() {
               <X size={14} />
               <span>Clear Filters</span>
             </button>
-          </div>
+          </motion.div>
         )}
 
         <Pagination

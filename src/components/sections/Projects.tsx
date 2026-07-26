@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom"
 import FeaturedCard from "./elements/projects/FeaturedCard"
 import ProjectCard from "./elements/projects/ProjectCard"
 import { ArrowRight } from "lucide-react"
+import { motion } from "framer-motion"
+import { fadeUp, scaleUp, staggerContainer, viewport } from "@/utils/animations"
 
 export default function Projects() {
   const navigate = useNavigate()
@@ -12,7 +14,13 @@ export default function Projects() {
   return (
     <div className="flex-1 min-h-0 flex items-center px-6 sm:px-12 xl:px-24 py-5">
       <div className="w-full flex flex-col gap-5">
-        <div className="flex items-center justify-between">
+        <motion.div
+          className="flex items-center justify-between"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           <div className="flex items-center gap-4">
             <span className="w-10 h-0.75 bg-accent rounded-full" />
             <h2 className="text-3xl xl:text-4xl font-bold">
@@ -30,17 +38,32 @@ export default function Projects() {
               className="transition-transform duration-200 group-hover:translate-x-1"
             />
           </button>
-        </div>
+        </motion.div>
         
         {spotlight && (
-          <FeaturedCard project={spotlight} />
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+          >
+            <FeaturedCard project={spotlight} />
+          </motion.div>
         )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           {gridItems.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+            <motion.div key={project.slug} variants={scaleUp}>
+              <ProjectCard project={project} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   )
