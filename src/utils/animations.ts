@@ -65,7 +65,7 @@ export const fastStagger: Variants = {
 };
 
 export const viewport = {
-  once: true,
+  once: false,
   margin: "-80px",
 };
 
