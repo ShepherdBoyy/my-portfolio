@@ -2,6 +2,8 @@ import { orbitRings } from "@/data/skills.data";
 import type { TechOrbitProps } from "@/types";
 import { useState } from "react";
 import SatelliteIcon from "./SatelliteIcon";
+import { motion } from "framer-motion";
+import { ringVariant, satelliteGroupVariant, satelliteVariant, sunVariant } from "@/utils/animations";
 
 export default function TechOrbitSystem({
   size,
@@ -27,15 +29,27 @@ export default function TechOrbitSystem({
       />
 
       {rings.map((r, i) => (
-        <div
+        <motion.div
           key={`guide-${i}`}
           className="absolute rounded-full border border-dashed border-accent/10 pointer-events-none"
           style={{ width: r.radius * 2, height: r.radius * 2 }}
+          variants={ringVariant}
+          custom={i}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
         />
       ))}
 
       {rings.map((r, i) => (
-        <div key={i}>
+        <motion.div
+          key={`ring-${i}`}
+          variants={satelliteGroupVariant}
+          custom={i}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           {orbitRings[i]?.map((skill, j) => (
             <SatelliteIcon
               key={skill.name}
@@ -48,24 +62,29 @@ export default function TechOrbitSystem({
               paused={pausedRing === i}
               onEnter={() => setPausedRing(i)}
               onLeave={() => setPausedRing(null)}
+              entranceVariant={satelliteVariant}
             />
           ))}
-        </div>
+        </motion.div>
       ))}
 
-      <div
+      <motion.div
         onMouseEnter={() => setSunHovered(true)}
         onMouseLeave={() => setSunHovered(false)}
         className="relative z-10 rounded-full bg-elevated/90 backdrop-blur-md border border-accent/20 flex flex-col
           items-center justify-center transition-all duration-300 ease-out hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_8px_28px_-4px_rgba(0,0,0,0.55),0_0_50px_-4px_var(--tw-shadow-color)]
           hover:shadow-accent/50"
         style={{ width: sunSize, height: sunSize }}
+        variants={sunVariant}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
       >
         <span className="text-text font-extrabold uppercase tracking-wide text-center leading-tight text-base sm:text-xl xl:text-2xl">
           Tech <br />
           Stack
         </span>
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -1,24 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import TechOrbitSystem from "./elements/skills/TechOrbitSystem";
 import type { Breakpoint } from "@/types";
 import { TECH_ORBIT } from "@/data/skills.data";
+import { motion } from "framer-motion";
+import { fadeUp, viewport } from "@/utils/animations";
 
 export default function Skills() {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = useState(false);
   const [breakpoint, setBreakpoint] = useState<Breakpoint>("desktop");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setVisible(true);
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     const mobileMq = window.matchMedia("(max-width: 639px)");
@@ -45,10 +33,7 @@ export default function Skills() {
   const cfg = TECH_ORBIT[breakpoint];
 
   return (
-    <div
-      ref={ref}
-      className="relative flex-1 min-h-0 flex items-center justify-center px-6 sm:px-12 xl:px-24 overflow-hidden"
-    >
+    <div className="relative flex-1 min-h-0 flex items-center justify-center px-6 sm:px-12 xl:px-24 overflow-hidden">
       <style>{`
         @property --a {
           syntax: "<angle>";
@@ -68,17 +53,18 @@ export default function Skills() {
         }}
       />
 
-      <div
-        className={`transition-all duration-700 ease-out ${
-          visible ? "opacity-100 scale-100" : "opacity-0 scale-95"
-        }`}
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewport}
       >
         <TechOrbitSystem
           size={cfg.size}
           sunSize={cfg.sunSize}
           rings={cfg.rings}
         />
-      </div>
+      </motion.div>
     </div>
   );
 }

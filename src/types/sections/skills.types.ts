@@ -1,3 +1,5 @@
+import type { Variants } from "framer-motion"
+
 export type Skill = {
     name: string
     icon: string
@@ -15,7 +17,8 @@ export type SkillIcon = {
     direction: Direction,
     paused: boolean,
     onEnter: () => void,
-    onLeave: () => void
+    onLeave: () => void,
+    entranceVariant?: Variants
 }
 
 export type RingConfig = {
