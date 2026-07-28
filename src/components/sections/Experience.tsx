@@ -15,9 +15,9 @@ export default function Experience() {
     activeTab === "work" ? workExperiences : academicBackground;
 
   return (
-    <div className="flex-1 min-h-0 flex flex-col gap-6 sm:gap-8 px-6 sm:px-12 xl:px-24 py-10">
+    <div className="flex-1 min-h-0 flex flex-col gap-6 sm:gap-8 px-6 sm:px-12 xl:px-24 py-5">
       <div className="flex items-center justify-center sm:justify-start">
-        <div className="grid grid-cols-2 sm:inline-flex items-center gap-2 bg-surface rounded-xl p-1.5 w-full sm:w-auto mt-6">
+        <div className="grid grid-cols-2 sm:inline-flex items-center gap-2 bg-surface rounded-xl p-1.5 w-full sm:w-auto">
           <button
             onClick={() => setActiveTab("work")}
             className={`px-3 sm:px-6 py-2.5 rounded-lg text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer whitespace-nowrap
