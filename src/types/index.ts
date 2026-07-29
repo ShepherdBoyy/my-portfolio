@@ -1,4 +1,5 @@
 export * from "./hooks/useWindowSize.types"
+export * from "./hooks/useTypewriter.types"
 
 export * from "./layout/navbar.types"
 export * from "./layout/footer.types"
