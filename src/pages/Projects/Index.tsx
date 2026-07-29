@@ -78,14 +78,7 @@ export default function Index() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          onClick={() => {
-            navigate("/");
-            setTimeout(() => {
-              document
-                .getElementById("projects")
-                ?.scrollIntoView({ behavior: "smooth" });
-            }, 100);
-          }}
+          onClick={() => navigate("/", { state: { scrollTo: "projects" } })}
           className="flex items-center gap-2 text-muted hover:text-text text-sm font-semibold transition-colors duration-200 cursor-pointer w-fit group"
         >
           <ArrowLeft
@@ -187,12 +180,14 @@ export default function Index() {
           </motion.div>
         )}
 
-        <Pagination
-          currentPage={currentPage}
-          totalItems={filteredProjects.length}
-          itemsPerPage={ITEMS_PER_PAGE}
-          onPageChange={handlePageChange}
-        />
+        <div className="mt-auto pt-8">
+          <Pagination
+            currentPage={currentPage}
+            totalItems={filteredProjects.length}
+            itemsPerPage={ITEMS_PER_PAGE}
+            onPageChange={handlePageChange}
+          />
+        </div>
       </div>
     </div>
   );
