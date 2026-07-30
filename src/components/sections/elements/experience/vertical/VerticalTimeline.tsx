@@ -13,11 +13,11 @@ export default function VerticalTimeline({ items }: TimelineProps) {
                     className="relative flex items-center w-full"
                 >
                     {index !== 0 && (
-                        <div className="bg-border/60 w-[2px] absolute left-1/2 -translate-x-1/2 top-0 bottom-1/2" />
+                        <div className="bg-border/60 w-0.5 absolute left-1/2 -translate-x-1/2 top-0 bottom-1/2" />
                     )}
 
                     {index !== items.length - 1 && (
-                        <div className="bg-border/60 w-[2px] absolute left-1/2 -translate-x-1/2 top-1/2 bottom-0" />
+                        <div className="bg-border/60 w-0.5 absolute left-1/2 -translate-x-1/2 top-1/2 bottom-0" />
                     )}
 
                     <TimelineCard item={item} side={side} />

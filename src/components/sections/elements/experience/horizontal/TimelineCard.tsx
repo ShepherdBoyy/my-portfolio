@@ -4,7 +4,7 @@ import { Calendar, ExternalLink, MapPin } from "lucide-react";
 export default function TimelineCard({ item, position }: HorizontalCardProps) {
   return (
     <div
-      className={`group relative w-[90%] max-w-[300px] flex flex-col gap-4 bg-surface/80 backdrop-blur-md border border-border/60 rounded-3xl
+      className={`group relative w-[90%] max-w-75 flex flex-col gap-4 bg-surface/80 backdrop-blur-md border border-border/60 rounded-3xl
         p-5 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/20 hover:border-accent/40 cursor-pointer
         ${position === "above" ? "mb-12" : "mt-12"}
       `}
