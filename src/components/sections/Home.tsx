@@ -1,8 +1,42 @@
 import { stats } from "@/data/home.data";
-import { fadeLeft, heroStagger, slideUp, staggerContainer, viewport, wordReveal } from "@/utils/animations";
+import { useTypewriter } from "@/hooks/useTypewriter";
+import {
+  fadeLeft,
+  heroStagger,
+  slideUp,
+  staggerContainer,
+  viewport,
+  wordReveal,
+} from "@/utils/animations";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const scrollTo = location.state?.scrollTo
+    if (!scrollTo) return
+
+    let rafId: number
+
+    const scrollWhenReady = () => {
+      const el = document.getElementById(scrollTo)
+      if (!el) {
+        rafId = requestAnimationFrame(scrollWhenReady)
+        return
+      }
+      el.scrollIntoView({ behavior: "smooth" })
+    }
+
+    scrollWhenReady()
+    navigate(".", { replace: true, state: {} })
+
+    return () => cancelAnimationFrame(rafId)
+  }, [location.state, navigate])
+
   const handleDownloadResume = (): void => {
     const link = document.createElement("a");
     link.href = "/jhey-marc-abad-resume.pdf";
@@ -11,6 +45,17 @@ export default function Home() {
     link.click();
     document.body.removeChild(link);
   };
+
+  const { displayed, isTyping } = useTypewriter({
+    texts: [
+      "I build things that help make the world a better place.",
+      "I turn ideas into clean, scalable web applications.",
+      "I craft solutions that make a real difference.",
+    ],
+    typeSpeed: 55,
+    deleteSpeed: 30,
+    pauseTime: 2200,
+  });
 
   return (
     <div className="flex-1 min-h-0 flex items-center px-6 sm:px-12 xl:px-24 py-15">
@@ -30,10 +75,7 @@ export default function Home() {
           </motion.div>
 
           <div className="leading-[0.95] overflow-hidden">
-            <motion.div
-              variants={heroStagger}
-              className="flex flex-col"
-            >
+            <motion.div variants={heroStagger} className="flex flex-col">
               <div className="overflow-hidden">
                 <motion.h1
                   className="text-5xl sm:text-6xl xl:text-8xl font-extrabold text-accent"
@@ -56,9 +98,14 @@ export default function Home() {
 
           <motion.p
             variants={slideUp}
-            className="text-muted max-w-lg text-lg leading-relaxed"
+            className="text-muted max-w-lg text-lg leading-relaxed min-h-8"
           >
-            I build things that help make the world a better place
+            {displayed}
+            <span
+              className={`inline-block w-0.5 h-[1.1em] bg-accent ml-0.5
+                align-middle transition-opacity duration-100
+                ${isTyping ? "opacity-100" : "animate-pulse"}`}
+            />
           </motion.p>
 
           <motion.div

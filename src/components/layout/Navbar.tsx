@@ -36,12 +36,7 @@ export default function Navbar() {
     setIsOpen(false);
 
     if (location.pathname !== "/") {
-      navigate("/");
-      setTimeout(() => {
-        document
-          .getElementById(sectionId)
-          ?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+      navigate("/", { state: { scrollTo: sectionId } });
       return;
     }
 
@@ -52,25 +47,37 @@ export default function Navbar() {
     if (location.pathname !== "/") return;
 
     const observers: IntersectionObserver[] = [];
+    let rafId: number;
 
-    navItems.forEach(({ sectionId }) => {
-      const element = document.getElementById(sectionId);
-      if (!element) return;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(sectionId);
-        },
-        { threshold: 0.5 },
+    const setup = () => {
+      const elements = navItems.map(({ sectionId }) =>
+        document.getElementById(sectionId),
       );
 
-      observer.observe(element);
-      observers.push(observer);
-    });
+      if (elements.some((el) => el === null)) {
+        rafId = requestAnimationFrame(setup);
+        return;
+      }
+
+      navItems.forEach(({ sectionId }, i) => {
+        const element = elements[i]!;
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) setActiveSection(sectionId);
+          },
+          { threshold: 0.5 },
+        );
+        observer.observe(element);
+        observers.push(observer);
+      });
+    };
+
+    setup();
 
     return () => {
+      cancelAnimationFrame(rafId);
       observers.forEach((o) => o.disconnect());
-    };
+    }
   }, [location.pathname]);
 
   const isActive = (sectionId: string): boolean => {
