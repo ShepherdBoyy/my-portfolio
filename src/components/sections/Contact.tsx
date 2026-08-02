@@ -17,7 +17,7 @@ import {
 import { useState } from "react";
 import ContactSuccess from "./elements/contact/ContactSuccess";
 import { sendEmail } from "@/utils/emailjs.utils";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { fadeLeft, fadeRight, viewport } from "@/utils/animations.utils";
 
 export default function Contact() {
@@ -143,7 +143,10 @@ export default function Contact() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div className="flex flex-col gap-2">
-                <label htmlFor="name" className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase">
+                <label
+                  htmlFor="name"
+                  className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase"
+                >
                   Full Name
                 </label>
 
@@ -174,7 +177,10 @@ export default function Contact() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="email" className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase">
+                <label
+                  htmlFor="email"
+                  className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase"
+                >
                   Email
                 </label>
 
@@ -206,7 +212,10 @@ export default function Contact() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="subject" className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase">
+              <label
+                htmlFor="subject"
+                className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase"
+              >
                 Subject
               </label>
 
@@ -236,7 +245,10 @@ export default function Contact() {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="message" className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase">
+              <label
+                htmlFor="message"
+                className="text-text/40 text-[11px] font-semibold tracking-[0.25em] uppercase"
+              >
                 Message
               </label>
 
@@ -300,7 +312,9 @@ export default function Contact() {
           </div>
         </motion.div>
 
-        {status === "success" && <ContactSuccess onReset={handleReset} />}
+        <AnimatePresence>
+          {status === "success" && <ContactSuccess onReset={handleReset} />}
+        </AnimatePresence>
       </div>
     </div>
   );
