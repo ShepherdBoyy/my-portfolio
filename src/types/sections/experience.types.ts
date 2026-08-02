@@ -27,9 +27,11 @@ export type TimelineProps = {
 export type HorizontalCardProps = {
     item: ExperienceItem
     position: "above" | "below"
+    index: number
 }
 
 export type VerticalCardProps = {
     item: ExperienceItem
     side: "left" | "right"
+    index: number
 }

@@ -1,11 +1,23 @@
 import type { HorizontalCardProps } from "@/types";
 import { Calendar, ExternalLink, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
+import { hoverLift, timelineCardVariant } from "@/utils/animations.utils";
 
-export default function TimelineCard({ item, position }: HorizontalCardProps) {
+export default function TimelineCard({
+  item,
+  position,
+  index = 0,
+}: HorizontalCardProps) {
   return (
-    <div
+    <motion.div
+      custom={{ position, index }}
+      variants={timelineCardVariant}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.4 }}
+      whileHover={hoverLift(position === "above" ? 8 : -8)}
       className={`group relative w-[90%] max-w-75 flex flex-col gap-4 bg-surface/80 backdrop-blur-md border border-border/60 rounded-3xl
-        p-5 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/20 hover:border-accent/40 cursor-pointer
+        p-5 transition-[box-shadow,border-color] duration-500 hover:shadow-2xl hover:shadow-accent/20 hover:border-accent/40 cursor-pointer
         ${position === "above" ? "mb-12" : "mt-12"}
       `}
       onClick={() => window.open(item.url, "_blank")}
@@ -30,6 +42,6 @@ export default function TimelineCard({ item, position }: HorizontalCardProps) {
       <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
         <ExternalLink size={14} className="text-muted" />
       </div>
-    </div>
+    </motion.div>
   );
 }

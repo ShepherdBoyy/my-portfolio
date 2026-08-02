@@ -1,6 +1,7 @@
 import type { ExperienceTab } from "@/types";
 import { Award } from "lucide-react";
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import HorizontalTimeline from "./elements/experience/horizontal/HorizontalTimeline";
 import { academicBackground, workExperiences } from "@/data/experience.data";
 import CertModal from "./elements/experience/CertModal";
@@ -20,62 +21,82 @@ export default function Experience() {
         <div className="grid grid-cols-2 sm:inline-flex items-center gap-2 bg-surface rounded-xl p-1.5 w-full sm:w-auto">
           <button
             onClick={() => setActiveTab("work")}
-            className={`px-3 sm:px-6 py-2.5 rounded-lg text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer whitespace-nowrap
-              ${
-                activeTab === "work"
-                  ? "bg-accent text-text shadow-lg shadow-accent/20"
-                  : "text-muted hover:text-text"
-              }`}
+            className={`relative px-3 sm:px-6 py-2.5 rounded-lg text-xs sm:text-sm font-semibold tracking-wide transition-colors duration-300 cursor-pointer whitespace-nowrap
+              ${activeTab === "work" ? "text-text" : "text-muted hover:text-text"}`}
           >
-            Work Experience
+            {activeTab === "work" && (
+              <motion.span
+                layoutId="experience-tab-pill"
+                className="absolute inset-0 bg-accent rounded-lg shadow-lg shadow-accent/20"
+                transition={{ type: "spring", stiffness: 400, damping: 32 }}
+              />
+            )}
+            <span className="relative z-10">Work Experience</span>
           </button>
           <button
             onClick={() => setActiveTab("academic")}
-            className={`px-3 sm:px-6 py-2.5 rounded-lg text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer whitespace-nowrap
-              ${
-                activeTab === "academic"
-                  ? "bg-accent text-text shadow-lg shadow-accent/20"
-                  : "text-muted hover:text-text"
-              }`}
+            className={`relative px-3 sm:px-6 py-2.5 rounded-lg text-xs sm:text-sm font-semibold tracking-wide transition-colors duration-300 cursor-pointer whitespace-nowrap
+              ${activeTab === "academic" ? "text-text" : "text-muted hover:text-text"}`}
           >
-            Academic Background
+            {activeTab === "academic" && (
+              <motion.span
+                layoutId="experience-tab-pill"
+                className="absolute inset-0 bg-accent rounded-lg shadow-lg shadow-accent/20"
+                transition={{ type: "spring", stiffness: 400, damping: 32 }}
+              />
+            )}
+            <span className="relative z-10">Academic Background</span>
           </button>
         </div>
       </div>
 
-      <div key={activeTab} className="flex-1 flex items-center">
-        <div className="w-full block md:hidden">
-          <StackedCards items={activeItems} />
-        </div>
+      <div className="flex-1 flex items-center overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="w-full flex flex-1 items-center"
+          >
+            <div className="w-full block md:hidden">
+              <StackedCards items={activeItems} />
+            </div>
 
-        <div className="w-full hidden md:block lg:hidden">
-          <VerticalTimeline items={activeItems} />
-        </div>
+            <div className="w-full hidden md:block lg:hidden">
+              <VerticalTimeline items={activeItems} />
+            </div>
 
-        <div className="hidden lg:flex flex-1 items-center justify-center">
-          <div className="w-full max-w-7xl">
-            <HorizontalTimeline items={activeItems} />
-          </div>
-        </div>
+            <div className="hidden lg:flex flex-1 items-center justify-center">
+              <div className="w-full max-w-7xl">
+                <HorizontalTimeline items={activeItems} />
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       <div className="flex justify-center sm:justify-end">
-        <button
+        <motion.button
           onClick={() => setCertModalOpen(true)}
-          className="flex items-center gap-3 cursor-pointer bg-accent text-text px-5 py-3 rounded-2xl shadow-xl hover:scale-105 active:scale-95 transition-all duration-300"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          className="flex items-center gap-3 cursor-pointer bg-accent text-text px-5 py-3 rounded-2xl shadow-xl"
         >
           <Award size={18} />
           <span className="text-sm font-semibold tracking-wide">
             Certifications
           </span>
-        </button>
+        </motion.button>
       </div>
 
-      {certModalOpen && (
-        <CertModal
-          onClose={() => setCertModalOpen(false)}
-        />
-      )}
+      <AnimatePresence>
+        {certModalOpen && (
+          <CertModal onClose={() => setCertModalOpen(false)} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
