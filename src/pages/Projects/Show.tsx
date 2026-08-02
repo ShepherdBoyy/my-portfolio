@@ -7,7 +7,7 @@ import ImageSlider from "./elements/ImageSlider";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { fadeRight, fadeUp, slideUp, staggerContainer, viewport } from "@/utils/animations";
+import { fadeRight, fadeUp, slideUp, staggerContainer, viewport } from "@/utils/animations.utils";
 
 export default function Show() {
   const { slug } = useParams<{ slug: string }>();

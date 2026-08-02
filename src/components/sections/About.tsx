@@ -5,7 +5,7 @@ import {
   fadeUp,
   staggerContainer,
   viewport,
-} from "@/utils/animations";
+} from "@/utils/animations.utils";
 import { motion } from "framer-motion";
 
 export default function About() {

@@ -18,7 +18,7 @@ import { useState } from "react";
 import ContactSuccess from "./elements/contact/ContactSuccess";
 import { sendEmail } from "@/utils/emailjs.utils";
 import { motion } from "framer-motion";
-import { fadeLeft, fadeRight, viewport } from "@/utils/animations";
+import { fadeLeft, fadeRight, viewport } from "@/utils/animations.utils";
 
 export default function Contact() {
   const [fields, setFields] = useState<FormField>(initialFields);

@@ -4,7 +4,7 @@ import FeaturedCard from "./elements/projects/FeaturedCard"
 import ProjectCard from "./elements/projects/ProjectCard"
 import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
-import { fadeUp, scaleUp, staggerContainer, viewport } from "@/utils/animations"
+import { fadeUp, scaleUp, staggerContainer, viewport } from "@/utils/animations.utils"
 
 export default function Projects() {
   const navigate = useNavigate()

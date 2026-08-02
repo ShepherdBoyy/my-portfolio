@@ -5,7 +5,7 @@ import {
   satelliteVariant,
   staggerContainer,
   viewport,
-} from "@/utils/animations";
+} from "@/utils/animations.utils";
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 

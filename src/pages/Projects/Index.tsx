@@ -9,7 +9,7 @@ import ProjectCard from "@/components/sections/elements/projects/ProjectCard";
 import Pagination from "./elements/Pagination";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { cardVariant, fadeUp, staggerContainer } from "@/utils/animations";
+import { cardVariant, fadeUp, staggerContainer } from "@/utils/animations.utils";
 
 const ITEMS_PER_PAGE = 12;
 

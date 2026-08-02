@@ -3,7 +3,7 @@ import type { TechOrbitProps } from "@/types";
 import { useState } from "react";
 import SatelliteIcon from "./SatelliteIcon";
 import { motion } from "framer-motion";
-import { ringVariant, satelliteGroupVariant, satelliteVariant, sunVariant } from "@/utils/animations";
+import { ringVariant, satelliteGroupVariant, satelliteVariant, sunVariant } from "@/utils/animations.utils";
 
 export default function TechOrbitSystem({
   size,

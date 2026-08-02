@@ -7,7 +7,7 @@ import {
   staggerContainer,
   viewport,
   wordReveal,
-} from "@/utils/animations";
+} from "@/utils/animations.utils";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";

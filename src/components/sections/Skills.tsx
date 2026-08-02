@@ -3,7 +3,7 @@ import TechOrbitSystem from "./elements/skills/TechOrbitSystem";
 import type { Breakpoint } from "@/types";
 import { TECH_ORBIT } from "@/data/skills.data";
 import { motion } from "framer-motion";
-import { fadeUp, viewport } from "@/utils/animations";
+import { fadeUp, viewport } from "@/utils/animations.utils";
 
 export default function Skills() {
   const [breakpoint, setBreakpoint] = useState<Breakpoint>("desktop");
