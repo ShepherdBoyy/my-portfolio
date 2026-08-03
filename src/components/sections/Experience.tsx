@@ -21,7 +21,7 @@ export default function Experience() {
         <div className="grid grid-cols-2 sm:inline-flex items-center gap-2 bg-surface rounded-xl p-1.5 w-full sm:w-auto">
           <button
             onClick={() => setActiveTab("work")}
-            className={`relative px-3 sm:px-6 py-2.5 rounded-lg text-xs sm:text-sm font-semibold tracking-wide transition-colors duration-300 cursor-pointer whitespace-nowrap
+            className={`relative px-3 sm:px-6 py-2.5 rounded-lg text-xs sm:text-sm font-semibold tracking-wide transition-colors duration-300 cursor-pointer whitespace-normal sm:whitespace-nowrap text-center
               ${activeTab === "work" ? "text-text" : "text-muted hover:text-text"}`}
           >
             {activeTab === "work" && (
@@ -35,8 +35,8 @@ export default function Experience() {
           </button>
           <button
             onClick={() => setActiveTab("academic")}
-            className={`relative px-3 sm:px-6 py-2.5 rounded-lg text-xs sm:text-sm font-semibold tracking-wide transition-colors duration-300 cursor-pointer whitespace-nowrap
-              ${activeTab === "academic" ? "text-text" : "text-muted hover:text-text"}`}
+            className={`relative px-3 sm:px-6 py-2.5 rounded-lg text-xs sm:text-sm font-semibold tracking-wide transition-colors duration-300 cursor-pointer whitespace-normal sm:whitespace-nowrap text-center
+    ${activeTab === "academic" ? "text-text" : "text-muted hover:text-text"}`}
           >
             {activeTab === "academic" && (
               <motion.span
@@ -93,9 +93,7 @@ export default function Experience() {
       </div>
 
       <AnimatePresence>
-        {certModalOpen && (
-          <CertModal onClose={() => setCertModalOpen(false)} />
-        )}
+        {certModalOpen && <CertModal onClose={() => setCertModalOpen(false)} />}
       </AnimatePresence>
     </div>
   );

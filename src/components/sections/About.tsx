@@ -13,7 +13,7 @@ export default function About() {
     <div className="flex-1 min-h-0 flex items-center px-6 sm:px-12 xl:px-24 py-10">
       <div className="w-full flex flex-col lg:flex-row items-center gap-12">
         <motion.div
-          className="lg:w-[35%] flex justify-center"
+          className="w-full lg:w-[35%] flex justify-center"
           variants={fadeRight}
           initial="hidden"
           whileInView="visible"
@@ -29,7 +29,7 @@ export default function About() {
         </motion.div>
 
         <motion.div
-          className="lg:w-[65%] flex flex-col gap-14"
+          className="w-full lg:w-[65%] flex flex-col gap-14"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"

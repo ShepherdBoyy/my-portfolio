@@ -49,8 +49,8 @@ export default function Home() {
   const { displayed, isTyping } = useTypewriter({
     texts: [
       "I build things that help make the world a better place.",
-      "I turn ideas into clean, scalable web applications.",
-      "I craft solutions that make a real difference.",
+      "I love turning ideas into solutions that are practical, scalable, and built with purpose.",
+      "Building software that's reliable today and ready for tomorrow.",
     ],
     typeSpeed: 55,
     deleteSpeed: 30,

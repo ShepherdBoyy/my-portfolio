@@ -15,7 +15,7 @@ export default function TimelineCard({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.4 }}
-      whileHover={hoverLift(position === "above" ? 8 : -8)}
+      whileHover={hoverLift(8)}
       className={`group relative w-[90%] max-w-75 flex flex-col gap-4 bg-surface/80 backdrop-blur-md border border-border/60 rounded-3xl
         p-5 transition-[box-shadow,border-color] duration-500 hover:shadow-2xl hover:shadow-accent/20 hover:border-accent/40 cursor-pointer
         ${position === "above" ? "mb-12" : "mt-12"}
