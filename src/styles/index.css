@@ -21,3 +21,7 @@ body {
     color: var(--color-text);
     font-family: var(--font-sans);
 }
+
+html, body {
+  overflow-x: hidden;
+}
