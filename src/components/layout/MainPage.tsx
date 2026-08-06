@@ -8,10 +8,10 @@ import Skills from "../sections/Skills";
 export default function MainPage() {
   return (
     <>
-        <section id="home" className="min-h-[calc(100vh-5rem)] md:scroll-mt-20 flex flex-col">
+        <section id="home" className="min-h-[calc(100vh-5rem)] md:scroll-mt-20 flex flex-col overflow-x-hidden">
             <Home />
         </section>
-        <section id="about" className="min-h-[calc(100vh-5rem)] md:scroll-mt-20 flex flex-col">
+        <section id="about" className="min-h-[calc(100vh-5rem)] md:scroll-mt-20 flex flex-col overflow-x-hidden">
             <About />
         </section>
         <section id="experience" className="min-h-[calc(100vh-5rem)] md:scroll-mt-20 flex flex-col">
