@@ -2,7 +2,7 @@
 
 > A personal portfolio website showcasing my skills, projects, and experience as a Full Stack Developer.
 
-🌐 **Live Site:** [jmarc.vercel.app](https://jmarc.vercel.app)
+🌐 **Live Site:** [jmarc.vercel.app](https://jmarc-dev.vercel.app)
 
 ![Portfolio Preview](public/preview.png)
 
@@ -58,10 +58,10 @@ Built from scratch as a personal project to showcase my work, skills, and journe
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/ShepherdBoyy/your-repo-name.git
+git clone https://github.com/ShepherdBoyy/my-portfolio.git
 
 # 2. Navigate into the project
-cd your-repo-name
+cd my-portfolio
 
 # 3. Install dependencies
 npm install
@@ -144,21 +144,3 @@ A `vercel.json` rewrite rule handles client-side routing so direct URL access an
   ]
 }
 ```
-
----
-
-## 📬 Contact
-
-Feel free to reach out — I'm open to freelance work, full-time roles, and collaborations.
-
-| Platform | Link |
-|---|---|
-| 🐙 **GitHub** | [github.com/ShepherdBoyy](https://github.com/ShepherdBoyy) |
-| 💼 **LinkedIn** | [linkedin.com/in/jmarcabad](https://www.linkedin.com/in/jmarcabad) |
-| 📧 **Email** | [jmarc.abad26@gmail.com](mailto:jmarc.abad26@gmail.com) |
-
----
-
-<p align="center">
-  Built with ♥ in the Philippines by <strong>Jhey Marc Abad</strong>
-</p>
