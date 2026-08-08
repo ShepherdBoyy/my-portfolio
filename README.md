@@ -26,7 +26,6 @@ A personal portfolio built with React and TypeScript, showcasing my journey as a
 | [React Router](https://reactrouter.com/) | Client-side Routing | v7 |
 | [EmailJS](https://www.emailjs.com/) | Contact Form | 4 |
 | [Lucide React](https://lucide.dev/) | Icons | 1 |
-| [Vercel](https://vercel.com) | Deployment | 24 |
 
 ## Getting Started
 
@@ -88,6 +87,37 @@ This project requires the following environment variables to enable the contact 
 |---|---|
 | `VITE_EMAILJS_SERVICE_ID` | Your EmailJS service ID - found in **Email Services** |
 | `VITE_EMAILJS_TEMPLATE_ID` | Your EmailJS template ID - found in **Email Templates** |
-| `VITE_EMAILJS_PUBLIC_KEY` | Your EmailJS public key - found in **Account -> General** |
+| `VITE_EMAILJS_PUBLIC_KEY` | Your EmailJS public key - found in **Account → General** |
 
 > **Note:** Never commit your `.env` file to GitHub. It is already listed in `.gitignore`. Use `.env.example` as a reference template.
+
+## Deployment
+
+This project is deployed in [Vercel](https://vercel.com) and is available at:
+
+**[https://jmarc-dev.vercel.app](https://jmarc-dev.vercel.app)**
+
+### Client-Side Routing
+
+Since this project uses [React Router](https://reactrouter.com) for client-side navigation, a `vercel.json` rewrite rule is required to prevent 404 errors when accessing routes directly (e.g. `/projects`, `/projects/:slug`):
+
+```json
+{
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ]
+}
+```
+
+This tells Vercel to always serve `index.html` and let React Router handle the routing on the client side.
+
+### Environment Variables on Vercel
+
+Add the same variables from `.env.example` to your Vercel project under:
+
+**Settings → Environment Variables**
+
+Changes are live automatically on every push to the `main` branch.
