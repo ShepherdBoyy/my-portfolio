@@ -79,3 +79,15 @@ npm run build
 ```
 
 The output will be in the `dist/` folder.
+
+## Environment variables
+
+This project requires the following environment variables to enable the contact form. All are provided by [EmailJS](https://www.emailjs.com) - free to set up.
+
+| Variable | Description |
+|---|---|
+| `VITE_EMAILJS_SERVICE_ID` | Your EmailJS service ID - found in **Email Services** |
+| `VITE_EMAILJS_TEMPLATE_ID` | Your EmailJS template ID - found in **Email Templates** |
+| `VITE_EMAILJS_PUBLIC_KEY` | Your EmailJS public key - found in **Account -> General** |
+
+> **Note:** Never commit your `.env` file to GitHub. It is already listed in `.gitignore`. Use `.env.example` as a reference template.
