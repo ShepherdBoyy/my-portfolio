@@ -11,3 +11,9 @@ A personal portfolio built with React and TypeScript, showcasing my journey as a
 [![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
 
 </div>
+
+---
+
+## Preview
+
+![Portfolio Preview](.github/images/preview.png)
