@@ -121,3 +121,7 @@ Add the same variables from `.env.example` to your Vercel project under:
 **Settings → Environment Variables**
 
 Changes are live automatically on every push to the `main` branch.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE)
