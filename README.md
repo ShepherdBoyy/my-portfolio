@@ -29,4 +29,4 @@ A personal portfolio built with React and TypeScript, showcasing my journey as a
 | [React Router](https://reactrouter.com/) | Client-side Routing | v7 |
 | [EmailJS](https://www.emailjs.com/) | Contact Form | 4 |
 | [Lucide React](https://lucide.dev/) | Icons | 1 |
-| [Vercel](https://vercel.com) | Deployment | Node.js v24 |
+| [Vercel](https://vercel.com) | Deployment | 24 |
