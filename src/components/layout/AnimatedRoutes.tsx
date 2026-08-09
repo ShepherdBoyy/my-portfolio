@@ -3,35 +3,37 @@ import PageTransition from "./PageTransition";
 import MainPage from "./MainPage";
 import Show from "@/pages/Projects/Show";
 import Index from "@/pages/Projects/Index";
+import NotFound from "./NotFound";
 
 export default function AnimatedRoutes() {
   const location = useLocation();
 
   return (
     <Routes location={location} key={location.pathname}>
-      <Route
-        path="/"
-        element={
+      <Route path="/" element={
           <PageTransition>
             <MainPage />
           </PageTransition>
         }
       />
 
-      <Route
-        path="/projects"
-        element={
+      <Route path="/projects" element={
           <PageTransition>
             <Index />
           </PageTransition>
         }
       />
 
-      <Route
-        path="/projects/:slug"
-        element={
+      <Route path="/projects/:slug" element={
           <PageTransition>
             <Show />
+          </PageTransition>
+        }
+      />
+
+      <Route path="*" element={
+          <PageTransition>
+            <NotFound />
           </PageTransition>
         }
       />
