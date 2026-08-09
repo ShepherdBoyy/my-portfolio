@@ -4,7 +4,7 @@ import { Search, X } from "lucide-react"
 export default function SearchInput({ value, onChange }: SearchInputProps) {
     
   return (
-    <div className="relative flex items-center">
+    <div className="relative flex items-center w-full sm:w-auto">
         <Search
             size={15}
             className="absolute left-3.5 text-muted pointer-events-none"
@@ -15,7 +15,7 @@ export default function SearchInput({ value, onChange }: SearchInputProps) {
             value={value}
             onChange={(e) => onChange(e.target.value)}
             placeholder="Search projects..."
-            className="w-full sm:w-64 bg-surface border border-border/60 rounded-xl pl-10 pr-9 py-2.5 text-sm text-text placeholder:text-muted focus:outline-none focus:border-accent/60 focus:bg-surface transition-all duration-200"
+            className="w-full sm:w-64 bg-surface border border-border/60 rounded-xl pl-10 pr-9 py-2.5 text-sm text-text placeholder:text-muted focus:outline-none focus:border-accent/60 transition-all duration-200"
         />
 
         {value && (

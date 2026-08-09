@@ -9,7 +9,11 @@ import ProjectCard from "@/components/sections/elements/projects/ProjectCard";
 import Pagination from "./elements/Pagination";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { cardVariant, fadeUp, staggerContainer } from "@/utils/animations.utils";
+import {
+  cardVariant,
+  fadeUp,
+  staggerContainer,
+} from "@/utils/animations.utils";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -89,45 +93,49 @@ export default function Index() {
         </motion.button>
 
         <motion.div
-          className="flex items-center justify-between"
+          className="flex flex-col sm:flex-row sm:items-center justify-between gap-4"
           variants={fadeUp}
           initial="hidden"
           animate="visible"
         >
-          <h1 className="text-3xl xl:text-4xl font-bold">
+          <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold">
             All <span className="text-accent">Projects</span>
           </h1>
 
-          <SearchInput value={searchQuery} onChange={handleSearchChange} />
+          <div className="w-full sm:w-auto">
+            <SearchInput value={searchQuery} onChange={handleSearchChange} />
+          </div>
         </motion.div>
 
         <motion.div
-          className="flex flex-col sm:flex-row sm:items-center gap-4"
+          className="flex flex-col gap-3"
           variants={fadeUp}
           initial="hidden"
           animate="visible"
         >
-          <PlatformDropdown
-            activePlatform={activePlatform}
-            onPlatformChange={handlePlatformChange}
-          />
+          <div className="flex items-center gap-3">
+            <PlatformDropdown
+              activePlatform={activePlatform}
+              onPlatformChange={handlePlatformChange}
+            />
 
-          <div className="flex-1">
+            {isFiltered && (
+              <button
+                onClick={handleClearFilters}
+                className="flex items-center gap-1.5 text-sm font-semibold text-muted hover:text-text transition-colors duration-200 cursor-pointer whitespace-nowrap ml-auto"
+              >
+                <X size={14} />
+                <span>Clear Filters</span>
+              </button>
+            )}
+          </div>
+
+          <div className="w-full">
             <CategoryPills
               activeCategory={activeCategory}
               onCategoryChange={handleCategoryChange}
             />
           </div>
-
-          {isFiltered && (
-            <button
-              onClick={handleClearFilters}
-              className="flex items-center gap-2 text-sm font-semibold text-muted hover:text-text transition-colors duration-200 cursor-pointer whitespace-nowrap"
-            >
-              <X size={14} />
-              <span>Clear Filters</span>
-            </button>
-          )}
         </motion.div>
 
         {paginatedProjects.length > 0 ? (
