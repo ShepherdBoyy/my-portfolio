@@ -13,29 +13,29 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Home() {
-  const location = useLocation()
-  const navigate = useNavigate()
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const scrollTo = location.state?.scrollTo
-    if (!scrollTo) return
+    const scrollTo = location.state?.scrollTo;
+    if (!scrollTo) return;
 
-    let rafId: number
+    let rafId: number;
 
     const scrollWhenReady = () => {
-      const el = document.getElementById(scrollTo)
+      const el = document.getElementById(scrollTo);
       if (!el) {
-        rafId = requestAnimationFrame(scrollWhenReady)
-        return
+        rafId = requestAnimationFrame(scrollWhenReady);
+        return;
       }
-      el.scrollIntoView({ behavior: "smooth" })
-    }
+      el.scrollIntoView({ behavior: "smooth" });
+    };
 
-    scrollWhenReady()
-    navigate(".", { replace: true, state: {} })
+    scrollWhenReady();
+    navigate(".", { replace: true, state: {} });
 
-    return () => cancelAnimationFrame(rafId)
-  }, [location.state, navigate])
+    return () => cancelAnimationFrame(rafId);
+  }, [location.state, navigate]);
 
   const handleDownloadResume = (): void => {
     const link = document.createElement("a");
@@ -133,21 +133,19 @@ export default function Home() {
 
           <motion.div
             variants={slideUp}
-            className="flex items-center bg-surface rounded-xl w-full sm:w-fit p-4"
+            className="inline-flex items-stretch bg-surface rounded-xl max-w-full p-2.5 sm:p-4"
           >
             {stats.map((stat, index) => (
-              <div
-                key={stat.label}
-                className="flex items-center flex-1 sm:flex-none"
-              >
-                <div className="px-4 sm:px-8 py-2 flex-1 sm:flex-none lg:text-left">
-                  <p className="text-accent text-2xl sm:text-3xl font-bold leading-tight">
+              <div key={stat.label} className="flex items-center">
+                <div className="px-1.5 sm:px-6 lg:px-8 py-1.5 sm:py-2 text-center md:text-left">
+                  <p className="text-accent text-base sm:text-2xl lg:text-3xl font-bold leading-tight">
                     {stat.value}
                   </p>
-                  <p className="text-muted text-xs sm:text-base font-medium">
+                  <p className="text-muted text-[10px] sm:text-xs lg:text-sm font-medium whitespace-pre-line">
                     {stat.label}
                   </p>
                 </div>
+
                 {index !== stats.length - 1 && (
                   <div className="h-12 w-px border border-border mx-1 sm:mx-2" />
                 )}
