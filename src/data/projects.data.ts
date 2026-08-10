@@ -109,7 +109,7 @@ export const projects: Project[] = [
     category:    "Full Stack",
     platform:    "Website",
     techStack:   ["React", "Vite", "Python", "Flask", "MySQL", "TensorFlow", "Keras", "OpenCV", "NumPy"],
-    githubUrl:   "https://github.com/ShepherdBoyy/currency-trace-frontend",
+    githubUrl:   "https://github.com/ShepherdBoyy/currency-trace",
     isFeatured:  false,
   }),
 ]
