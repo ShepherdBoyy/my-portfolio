@@ -108,29 +108,27 @@ export default function Index() {
         </motion.div>
 
         <motion.div
-          className="flex flex-col gap-3"
+          className="flex flex-wrap sm:flex-nowrap items-center gap-3"
           variants={fadeUp}
           initial="hidden"
           animate="visible"
         >
-          <div className="flex items-center gap-3">
-            <PlatformDropdown
-              activePlatform={activePlatform}
-              onPlatformChange={handlePlatformChange}
-            />
+          <PlatformDropdown
+            activePlatform={activePlatform}
+            onPlatformChange={handlePlatformChange}
+          />
 
-            {isFiltered && (
-              <button
-                onClick={handleClearFilters}
-                className="flex items-center gap-1.5 text-sm font-semibold text-muted hover:text-text transition-colors duration-200 cursor-pointer whitespace-nowrap ml-auto"
-              >
-                <X size={14} />
-                <span>Clear Filters</span>
-              </button>
-            )}
-          </div>
+          {isFiltered && (
+            <button
+              onClick={handleClearFilters}
+              className="order-2 sm:order-3 flex items-center gap-1.5 text-sm font-semibold text-muted hover:text-text transition-colors duration-200 cursor-pointer whitespace-nowrap w-fit ml-auto sm:ml-0"
+            >
+              <X size={14} />
+              <span>Clear Filters</span>
+            </button>
+          )}
 
-          <div className="w-full">
+          <div className="order-3 sm:order-2 basis-full sm:basis-auto sm:flex-1">
             <CategoryPills
               activeCategory={activeCategory}
               onCategoryChange={handleCategoryChange}
